@@ -2,9 +2,15 @@
 
 This repository integrates Machinations UP within Ruby's Adventure, a simple game that is available as a Unity Tutorial.
 
-1. Install the Unity 3D Engine.
-2. Clone this repo.
-3. Open in Unity 3D.
-4. Open this Diagram in your browser: www.machinations.io
-5. Run the game and make some changes in the diagram.
-6. Enjoy :)
+Quick installation steps:
+
+1. Install the Unity 3D Engine (more info below).
+2. Open this repo with Unity 3D (add this directory in Unity Hub).
+3. Open Ruby's Adventure Machinations [diagram](www.machinations.io) in your web browser.
+4. Run the game in Unity and change `Player HP` in the diagram.
+
+Reference links:
+
+[Unity's Ruby's Adventure Tutorial](https://learn.unity.com/project/ruby-s-2d-rpg)
+
+[Installing Unity (in detail)](README-unity.md)
