@@ -32,13 +32,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/e4/ef650db2/RemoteCertificateValidationCallback.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/Chunk.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/7d/5e4957ff/Number.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/ChunkedRequestStream.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/HttpRequestHeader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/a2/a7013b00/X509CertificateCollection.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/09/b295193d/AuthenticatedStream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/AuthenticationBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/94/1cf71025/NumberFormatInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -57,9 +55,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/c7/49987bcc/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Server/WebSocketServiceHost.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/89/184cc980/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/78/18d5082b/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/183CC947-3B1E-4A2E-9649-7B45BF64605B/8f/420ddce2/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWW.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/0d/651e5e30/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
@@ -101,7 +97,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/MachinationsSupport/Events/RubyAdventureGameEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/24/0502bd1d/Debug.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/7d/ea8a6f89/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/862B9365-843C-4BF1-BA93-210C124BB523/ab/5ba60463/SslProtocols.cs" root0="SKIP_HIGHLIGHTING" />
@@ -140,16 +135,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Game/GameStates.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Events/EventsAssociation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/States/StatesAssociation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/GameObject/GameObjectStates.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/e5/733a7238/SslProtocols.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Fin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/HttpRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/AssemblyInfo.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/4c/b1453b3d/String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/WebSocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/PayloadData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/HttpBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -236,10 +227,10 @@
     </option>
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20792">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20792" />
+      <option name="pid" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -283,6 +274,7 @@
       <workItem from="1589302382234" duration="1506000" />
       <workItem from="1589304901075" duration="665000" />
       <workItem from="1589308214864" duration="30755000" />
+      <workItem from="1589468680854" duration="3263000" />
     </task>
     <servers />
   </component>
@@ -411,10 +403,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="620" y="256" width="672" height="677" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589316922240" />
-    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1589456228533">
+    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1589469501525">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589456228533" />
+    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589469501525" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -431,19 +423,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs</url>
-          <line>127</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs" initialLine="127">
-            <startOffsets>
-              <option value="5771" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5878" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

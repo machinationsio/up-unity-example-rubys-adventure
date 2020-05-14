@@ -3167,7 +3167,7 @@ PrefabInstance:
     - target: {fileID: 7471410119811048300, guid: 71879bd392bfc0b4dbc3a986ee2b6a0d,
         type: 3}
       propertyPath: cacheDirectoryName
-      value: Second
+      value: MyCacheDirectory
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71879bd392bfc0b4dbc3a986ee2b6a0d, type: 3}

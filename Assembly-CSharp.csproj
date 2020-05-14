@@ -202,6 +202,7 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\2D Beginner\Scripts\MachinationsUP\ThirdParty\SocketIO\JSONObject\readme.txt" />
+     <None Include="Assets\MachinationsCache\MyCacheDirectory\Cache.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\2D Beginner\Scripts\MachinationsUP\ThirdParty\SocketIO\Readme.txt" />
      <None Include="Assets\MachinationsCache\Second\Cache.xml" />

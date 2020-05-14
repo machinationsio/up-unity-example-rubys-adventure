@@ -229,6 +229,9 @@
           <e p="First" t="Include">
             <e p="Cache.xml" t="Include" />
           </e>
+          <e p="MyCacheDirectory" t="Include">
+            <e p="Cache.xml" t="Include" />
+          </e>
           <e p="Second" t="Include">
             <e p="Cache.xml" t="Include" />
           </e>
