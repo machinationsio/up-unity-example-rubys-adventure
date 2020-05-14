@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="88f8f797-bf1d-4885-9ac5-77f81d10ac46" name="Default Changelist" comment="a" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/e4/ef650db2/RemoteCertificateValidationCallback.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/Chunk.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/7d/5e4957ff/Number.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/ChunkedRequestStream.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/HttpRequestHeader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/a2/a7013b00/X509CertificateCollection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/09/b295193d/AuthenticatedStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/AuthenticationBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/94/1cf71025/NumberFormatInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/AuthenticationResponse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1D98D70B-B7D8-453B-80C2-5AA561FDECD1/0b/9b4901c1/XmlWriterSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/HttpUtility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/fc/92f3f700/RuntimeInitializeLoadType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/HttpListenerPrefixCollection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/40/426b9a37/X509Certificate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/d9/2072fc00/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/71/bd66ca6a/SslStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/ClientSslConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/HttpListenerRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/Cookie.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/WebSockets/HttpListenerWebSocketContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/c7/49987bcc/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Server/WebSocketServiceHost.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/89/184cc980/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/78/18d5082b/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/183CC947-3B1E-4A2E-9649-7B45BF64605B/8f/420ddce2/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWW.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/0d/651e5e30/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/49/82edb157/Camera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWWWW.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWWWWW.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/43/f4266d8a/TcpClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWW.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWWW.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/e5/a5ec2f9e/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/1e/946d3e04/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/ElementBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/FormulaElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4AF5BEA1-B7B2-4424-94FD-73F6F9B3D7F4/36/6d4cfec7/RectTransformUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Engines/Unity/MachinationsGameLayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/fe/3c5e0b0b/EventHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/MachinationsFormula.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/d1/9df57435/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Members/DiceMember.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Members/MemberBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/5e/222a886a/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/SyncAPI/OverwriteRules.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/0e/c35b5408/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/SyncAPI/MachinationsCommands.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/SyncAPI/UpdateRules.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/DiagramMapping.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/MachinationsGameObjectManifest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/e7/03f7914f/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/SyncAPI/SyncMsgs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameAwareObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/862B9365-843C-4BF1-BA93-210C124BB523/f2/c37cda9d/X509CertificateCollection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/MachinationsSupport/SampleSceneStartupHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/MachinationsSupport/SampleGameEngine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/83/3e6f71d1/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/MachinationsSupport/Events/RubyAdventureGameEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/24/0502bd1d/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/7d/ea8a6f89/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/862B9365-843C-4BF1-BA93-210C124BB523/ab/5ba60463/SslProtocols.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/RubyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/d9/f69ab869/Int32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/6a/4e0cf4b0/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/Scripts/SocketIO/Ack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/Scripts/SocketIO/SocketIOComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIHealthBar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/EnemyHealthBar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/FloatingTextController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIAmmoCount.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/FloatingTextController.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIConsole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/10/c8c33bcc/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/Scripts/SocketIO/Packet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/11/f083b2e8/CallbackHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/JSONObject/JSONObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/31/bf6f92e7/ServerCertValidationCallback.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/FloatingText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/Prefabs/HealthBar.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/862B9365-843C-4BF1-BA93-210C124BB523/74/5692d747/SslStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/15/3b5b679d/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/JSONObject/Editor/JSONChecker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/ab/bc3e6103/Buffer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Ext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/e1/e39a2779/AsyncTaskMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Game/IGameLifecycleSubscriber.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/67/af9c3270/X509Certificate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/c0/1b17f03c/MobileAuthenticatedStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Game/IGameLifecycleProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/MCache.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Game/GameStates.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Events/EventsAssociation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/States/StatesAssociation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/GameObject/GameObjectStates.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AE22A4E8-F83C-41D6-9684-AE7F557133D9/e5/733a7238/SslProtocols.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Fin.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/HttpRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/AssemblyInfo.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/4c/b1453b3d/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/WebSocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/PayloadData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/HttpBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Rsv.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameIntegration/MachinationsGameObjectManifest.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/MachinationsElementBinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/MachinationsGameAwareObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/MachinationsGameObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/SyncAPI/MachinationAPIMsg.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/MachinationsGameObjectManifest.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/DiagramMapping.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/MachinationsElementBinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/MachinationsElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/GameAwareObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/SyncAPI/OverwriteRules.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/MachinationsFormula.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Dice.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Features/Dice.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Features/FeatureBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Features/DiceMember.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Features/MemberBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWWWWW.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWWWW.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/WWWWWWWWWWWWWWWWWW.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWWW.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/WWWWWWWWWWWWWWWW.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/WebSocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/SyncAPI/SyncMsgs.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIHealthBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Manifest/MachinationsGameObjectManifest.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Projectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIConsole.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/FloatingTextController.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/FloatingText.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Manifest/DiagramMapping.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/Scripts/SocketIO/SocketIOComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/EnemySpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/EnemyHealthBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/Cache.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameAwareObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/DiagramMapping.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/ElementBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/MCache.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/States/StatesAssociation.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/RubyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/GameObject/GameObjectStates.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Game/GameStates.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/FormulaElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Members/DiceMember.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Members/MemberBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/MachinationsFormula.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Engines/Unity/MachinationsGameLayer.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aJvJ5edEO2cHUbTTVVFey1DgiC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34417343" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.300271" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.5094637" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="s" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20792">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="20792" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="88f8f797-bf1d-4885-9ac5-77f81d10ac46" name="Default Changelist" comment="" />
+      <created>1586466436998</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586466436998</updated>
+      <workItem from="1586466449175" duration="1241000" />
+      <workItem from="1586761129249" duration="5897000" />
+      <workItem from="1586966354101" duration="498000" />
+      <workItem from="1586967062836" duration="3604000" />
+      <workItem from="1586976433732" duration="7951000" />
+      <workItem from="1587022284296" duration="17636000" />
+      <workItem from="1587468597481" duration="19305000" />
+      <workItem from="1587551032090" duration="20523000" />
+      <workItem from="1587595976266" duration="9964000" />
+      <workItem from="1587770772524" duration="635000" />
+      <workItem from="1588023980003" duration="3542000" />
+      <workItem from="1588146202437" duration="779000" />
+      <workItem from="1588484677016" duration="30150000" />
+      <workItem from="1588629659562" duration="2924000" />
+      <workItem from="1588632876745" duration="2151000" />
+      <workItem from="1588691538428" duration="20791000" />
+      <workItem from="1589022346301" duration="56356000" />
+      <workItem from="1589262432987" duration="795000" />
+      <workItem from="1589263284809" duration="5964000" />
+      <workItem from="1589279561784" duration="10702000" />
+      <workItem from="1589291262759" duration="747000" />
+      <workItem from="1589302382234" duration="1506000" />
+      <workItem from="1589304901075" duration="665000" />
+      <workItem from="1589308214864" duration="30755000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="643" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588625578553">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="643" y="350" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1588625578553" />
+    <state width="613" height="466" key="DebuggerActiveHint" timestamp="1589455458514">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="613" height="466" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1589455458514" />
+    <state x="92" y="92" width="1736" height="896" key="DiffContextDialog" timestamp="1588566868511">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="92" y="92" width="1736" height="896" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588566868511" />
+    <state width="1876" height="382" key="GridCell.Tab.0.bottom" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.0.center" timestamp="1589460850487">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850487" />
+    <state width="1876" height="382" key="GridCell.Tab.0.left" timestamp="1589460850485">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850485" />
+    <state width="1876" height="382" key="GridCell.Tab.0.right" timestamp="1589460850487">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850487" />
+    <state width="1876" height="382" key="GridCell.Tab.1.bottom" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.1.center" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.1.left" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.1.right" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.2.bottom" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.2.center" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.2.left" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.2.right" timestamp="1589460850488">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
+    <state width="1876" height="382" key="GridCell.Tab.3.bottom" timestamp="1589460850489">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.3.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
+    <state width="1876" height="382" key="GridCell.Tab.3.center" timestamp="1589460850489">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.3.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
+    <state width="1876" height="382" key="GridCell.Tab.3.left" timestamp="1589460850489">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.3.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
+    <state width="1876" height="382" key="GridCell.Tab.3.right" timestamp="1589460850489">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="382" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
+    <state x="465" y="189" key="SettingsEditor" timestamp="1588654095319">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="465" y="189" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1588654095319" />
+    <state x="583" y="276" key="Vcs.Push.Dialog.v2" timestamp="1589143118428">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="583" y="276" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1589143118428" />
+    <state width="970" height="549" key="XDebugger.FullValuePopup" timestamp="1588739600880">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="970" height="549" key="XDebugger.FullValuePopup/0.0.1920.1080@0.0.1920.1080" timestamp="1588739600880" />
+    <state x="168" y="100" width="1670" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587027124494">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="168" y="100" width="1670" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587027124494" />
+    <state x="778" y="375" width="1065" height="606" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1587067784511">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="778" y="375" width="1065" height="606" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1080@0.0.1920.1080" timestamp="1587067784511" />
+    <state x="631" y="279" width="750" height="616" key="find.popup" timestamp="1589453372916">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="631" y="279" width="750" height="616" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589453372916" />
+    <state x="620" y="256" width="672" height="677" key="run.anything.popup" timestamp="1589316922240">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="620" y="256" width="672" height="677" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589316922240" />
+    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1589456228533">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589456228533" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs</url>
+          <line>193</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs" initialLine="198">
+            <startOffsets>
+              <option value="9434" />
+            </startOffsets>
+            <endOffsets>
+              <option value="9549" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs</url>
+          <line>127</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs" initialLine="127">
+            <startOffsets>
+              <option value="5771" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5878" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
+        <watch expression="dm.CachedElementBase" />
+        <watch expression="Formula.ToString()" language="C#" />
+        <watch expression="Formula" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

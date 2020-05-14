@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MachinationsCache xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.machinations.io">
+  <DiagramMappings>
+    <MachinationsDiagramMapping>
+      <CachedElementBase>
+        <BaseValue>33</BaseValue>
+        <CurrentValue>33</CurrentValue>
+        <MaxValue>50</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>19</DiagramElementID>
+      <GameObjectName>Ruby</GameObjectName>
+      <GameObjectPropertyName>Health</GameObjectPropertyName>
+      <StatesAssoc>
+        <Title>Exploring</Title>
+        <gameObjectStates xmlns:d5p1="http://www.rubygame.com" />
+        <gameStates xmlns:d5p1="http://www.rubygame.com">
+          <d5p1:RubyGameStates>Exploring</d5p1:RubyGameStates>
+        </gameStates>
+      </StatesAssoc>
+    </MachinationsDiagramMapping>
+    <MachinationsDiagramMapping>
+      <CachedElementBase>
+        <BaseValue>6</BaseValue>
+        <CurrentValue>6</CurrentValue>
+        <MaxValue>-1</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>23</DiagramElementID>
+      <GameObjectName>EnemySpawner</GameObjectName>
+      <GameObjectPropertyName>ExtraEnemies</GameObjectPropertyName>
+      <StatesAssoc
+        i:nil="true" />
+    </MachinationsDiagramMapping>
+    <MachinationsDiagramMapping>
+      <CachedElementBase>
+        <BaseValue>290</BaseValue>
+        <CurrentValue>290</CurrentValue>
+        <MaxValue>-1</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>74</DiagramElementID>
+      <GameObjectName>Enemy</GameObjectName>
+      <GameObjectPropertyName>Health</GameObjectPropertyName>
+      <StatesAssoc
+        i:nil="true" />
+    </MachinationsDiagramMapping>
+    <MachinationsDiagramMapping>
+      <CachedElementBase
+        i:type="MachinationsFormula">
+        <BaseValue>26</BaseValue>
+        <CurrentValue>26</CurrentValue>
+        <MaxValue>-1</MaxValue>
+        <MinValue>0</MinValue>
+        <FormulaString>20+D24</FormulaString>
+        <MFormula>
+          <FormulaString>20+D24</FormulaString>
+        </MFormula>
+        <RerunFormulaAtEveryAccess>true</RerunFormulaAtEveryAccess>
+        <RerunFormulaAtReset>false</RerunFormulaAtReset>
+      </CachedElementBase>
+      <DiagramElementID>76</DiagramElementID>
+      <GameObjectName>Projectile</GameObjectName>
+      <GameObjectPropertyName>Damage</GameObjectPropertyName>
+      <StatesAssoc>
+        <Title>Exploring</Title>
+        <gameObjectStates xmlns:d5p1="http://www.rubygame.com" />
+        <gameStates xmlns:d5p1="http://www.rubygame.com">
+          <d5p1:RubyGameStates>Exploring</d5p1:RubyGameStates>
+        </gameStates>
+      </StatesAssoc>
+    </MachinationsDiagramMapping>
+    <MachinationsDiagramMapping>
+      <CachedElementBase>
+        <BaseValue>20</BaseValue>
+        <CurrentValue>20</CurrentValue>
+        <MaxValue>296</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>102</DiagramElementID>
+      <GameObjectName>Ruby</GameObjectName>
+      <GameObjectPropertyName>Speed</GameObjectPropertyName>
+      <StatesAssoc>
+        <Title>Exploring</Title>
+        <gameObjectStates xmlns:d5p1="http://www.rubygame.com" />
+        <gameStates xmlns:d5p1="http://www.rubygame.com">
+          <d5p1:RubyGameStates>Exploring</d5p1:RubyGameStates>
+        </gameStates>
+      </StatesAssoc>
+    </MachinationsDiagramMapping>
+  </DiagramMappings>
+</MachinationsCache>

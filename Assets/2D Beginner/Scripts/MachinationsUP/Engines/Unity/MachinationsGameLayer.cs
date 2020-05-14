@@ -1,0 +1,845 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
+using MachinationsUP.GameEngineAPI.Game;
+using MachinationsUP.GameEngineAPI.GameObject;
+using MachinationsUP.GameEngineAPI.States;
+using MachinationsUP.SyncAPI;
+using MachinationsUP.Integration.Binder;
+using MachinationsUP.Integration.Elements;
+using MachinationsUP.Integration.GameObject;
+using MachinationsUP.Integration.Inventory;
+using SocketIO;
+using UnityEngine;
+using WebSocketSharp;
+
+namespace MachinationsUP.Engines.Unity
+{
+    /// <summary>
+    /// The Machinations Game Layer is a game-wide Singleton that handles communication with the Machinations back-end.
+    /// </summary>
+    public class MachinationsGameLayer : MonoBehaviour, IGameLifecycleSubscriber, IGameObjectLifecycleSubscriber
+    {
+
+        #region Variables
+
+        #region Editor-Defined
+
+        /// <summary>
+        /// Game name is be used for associating a game with multiple diagrams.
+        /// [TENTATIVE UPCOMING SUPPORT]
+        /// </summary>
+        public string gameName;
+
+        /// <summary>
+        /// The Machinations Diagram Token will be used to identify ONE Diagram that this game is connected to.
+        /// </summary>
+        public string diagramToken;
+
+        /// <summary>
+        /// Name of the directory where to store the Cache. If defined, then the MGL will store all values received from
+        /// Machinations within this directory inside an XML file. Upon startup, if the connection to the Machinations Back-end
+        /// is not operational, the Cache will be used. This system can also be used to provide versioning between different
+        /// snapshots of data received from Machinations.
+        /// </summary>
+        public string cacheDirectoryName;
+
+        #endregion
+
+        #region Public
+
+        private IGameLifecycleProvider _gameLifecycleProvider;
+
+        /// <summary>
+        /// Used by MachinationsGameAwareObjects to query Game State.
+        /// </summary>
+        public IGameLifecycleProvider GameLifecycleProvider
+        {
+            set => _gameLifecycleProvider = value;
+        }
+
+        /// <summary>
+        /// Global Event Handler for any incoming update from Machinations back-end.
+        /// </summary>
+        static public EventHandler OnMachinationsUpdate;
+
+        /// <summary>
+        /// Will throw exceptions if values are not found in Offline mode.
+        /// </summary>
+        static public bool StrictOfflineMode = false;
+
+        #endregion
+
+        #region Private
+
+        /// <summary>
+        /// This Dictionary contains ALL Machinations Diagram Elements that can possibly be retrieved
+        /// during the lifetime of the game. This is generated based on ALL the
+        /// <see cref="MachinationsUP.Integration.Inventory.MachinationsGameObjectManifest"/> declared in the game.
+        ///
+        /// New MachinationElements are created from the ones in this Dictionary.
+        ///
+        /// Dictionary of the <see cref="MachinationsUP.Integration.Inventory.DiagramMapping"/> indicating where in the Diagram to find a
+        /// Game Object Property Name and the <see cref="ElementBase"/> that will serve as a Source value
+        /// to all values that will be created by the MachinationsGameLayer.
+        /// </summary>
+        static readonly private Dictionary<DiagramMapping, ElementBase> _sourceElements =
+            new Dictionary<DiagramMapping, ElementBase>();
+
+        /// <summary>
+        /// Disk XML cache.
+        /// See <see cref="MachinationsUP.Integration.Inventory.MCache"/>.
+        /// </summary>
+        static private MCache _cache = new MCache();
+
+        /// <summary>
+        /// List with of all registered MachinationsGameObject.
+        /// </summary>
+        static readonly private List<MachinationsGameObject> _gameObjects = new List<MachinationsGameObject>();
+
+        /// <summary>
+        /// List with of all registered MachinationsGameAwareObject.
+        /// </summary>
+        static readonly private List<MachinationsGameAwareObject> _gameAwareObjects = new List<MachinationsGameAwareObject>();
+
+        /// <summary>
+        /// Socket.io used for communication with Machinations NodeJS backend.
+        /// </summary>
+        private SocketIOComponent _socket;
+
+        /// <summary>
+        /// Number of responses that are pending from the Socket.
+        /// </summary>
+        private int _pendingResponses;
+
+        /// <summary>
+        /// Connection to Machinations Backend has been aborted.
+        /// </summary>
+        static private bool _connectionAborted;
+
+        #endregion
+
+        #endregion
+
+        #region Implementation of IGameLifecycleSubscriber
+
+        /// <summary>
+        /// Returns the current Game State.
+        /// </summary>
+        public GameStates CurrentGameState { get; private set; }
+
+        /// <summary>
+        /// Informs an IGameLifecycleSubscriber about a new Game State.
+        /// </summary>
+        /// <param name="newGameState">New Game State.</param>
+        public void OnGameStateChanged (GameStates newGameState)
+        {
+            if (newGameState == CurrentGameState) return;
+            foreach (MachinationsGameAwareObject mgao in _gameAwareObjects)
+                mgao.OnGameStateChanged(newGameState);
+            CurrentGameState = newGameState;
+        }
+
+        /// <summary>
+        /// Informs an IGameLifecycleSubscriber that a Game Event occured.
+        /// </summary>
+        /// <param name="evnt"></param>
+        public void OnGameEvent (string evnt)
+        {
+        }
+
+        /// <summary>
+        /// Machinations -> Game commands. Intended for Future use.
+        /// </summary>
+        /// <param name="command"></param>
+        public void GameCommand (MachinationsCommands command)
+        {
+        }
+
+        #endregion
+
+        #region Implementation of IGameObjectLifecycleSubscriber
+
+        /// <summary>
+        /// Returns the current Game Object State.
+        /// </summary>
+        public GameObjectStates CurrentGameObjectState { get; private set; }
+
+        /// <summary>
+        /// Informs an IGameObjectLifecycleSubscriber about a new Game Object State.
+        /// </summary>
+        /// <param name="newGameObjectState">New Game Object State.</param>
+        public void OnGameObjectStateChanged (GameObjectStates newGameObjectState)
+        {
+            if (newGameObjectState == CurrentGameObjectState) return;
+            foreach (MachinationsGameAwareObject mgao in _gameAwareObjects)
+                mgao.OnGameObjectStateChanged(newGameObjectState);
+            CurrentGameObjectState = newGameObjectState;
+        }
+
+        /// <summary>
+        /// Informs an IGameObjectLifecycleSubscriber that a Game Object Event occured.
+        /// </summary>
+        /// <param name="evnt"></param>
+        public void OnGameObjectEvent (string evnt)
+        {
+            throw new NotSupportedException("Not supported. This is only for MachinationsGameAwareObjects.");
+        }
+
+        #endregion
+
+        #region Singleton
+
+        /// <summary>
+        /// Singleton instance.
+        /// </summary>
+        static private MachinationsGameLayer _instance;
+
+        /// <summary>
+        /// Singleton implementation.
+        /// </summary>
+        static public MachinationsGameLayer Instance
+        {
+            get
+            {
+                if (_instance != null) return _instance;
+                Debug.Log("MGL Created by invocation.");
+                return _instance = new GameObject("MachinationsGameLayer").AddComponent<MachinationsGameLayer>();
+            }
+        }
+
+        #endregion
+
+        #region MonoBehaviour Overrides (Entry Point is in Start)
+
+        /// <summary>
+        /// Awake is used to initialize any variables or game state before the game starts.
+        /// Awake is called only once during the lifetime of the script instance.
+        /// Awake is called after all objects are initialized so you can safely speak to other objects
+        /// or query them using for example GameObject.FindWithTag.
+        /// </summary>
+        private void Awake ()
+        {
+            if (_instance == null)
+            {
+                //If the MGL is added to the Scene as a prefab (as it should), then this function
+                //will likely execute before Instance is ever accessed. Making sure that the instance is set.
+                Debug.Log("MGL created by Unity Engine.");
+                _instance = this;
+            }
+
+            Debug.Log("MGL Awake.");
+            Debug.Log(gameObject); //Show the object to which this script is attached, if any.
+        }
+
+        /// <summary>
+        /// Start is called before the first frame update.
+        /// </summary>
+        private IEnumerator Start ()
+        {
+            Debug.Log("MGL.Start: Pausing game during initialization.");
+
+            foreach (MachinationsGameObject mgo in _gameObjects)
+                AddTargets(mgo.Manifest.GetMachinationsDiagramTargets());
+
+            //Pause game.
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+            //Initialize socket.
+            GameObject go = GameObject.Find("SocketIO");
+            //TODO: during development, fail fast on Socket error. Remove @ release.
+            SocketIOComponent.MaxRetryCountForConnect = 1;
+            _socket = go.GetComponent<SocketIOComponent>();
+            _socket.On("open", OnSocketOpen);
+            _socket.On(SyncMsgs.RECEIVE_AUTH_SUCCESS, OnAuthSuccess);
+            _socket.On(SyncMsgs.RECEIVE_AUTH_DENY, OnAuthDeny);
+            _socket.On(SyncMsgs.RECEIVE_GAME_INIT, OnGameInitResponse);
+            _socket.On(SyncMsgs.RECEIVE_DIAGRAM_ELEMENTS_UPDATED, OnDiagramElementsUpdated);
+            _socket.On("error", OnSocketError);
+            _socket.On("close", OnSocketClose);
+
+            Debug.Log("MGL.Start: Initiating connection to Machinations Backend.");
+
+            yield return new WaitUntil(() => _socket.IsConnected || _connectionAborted);
+
+            if (_connectionAborted)
+            {
+                Debug.LogError("MGL Connection failure. Game will proceed with default/cached values!");
+
+                //Cache system active? Load Cache.
+                if (!string.IsNullOrEmpty(cacheDirectoryName)) LoadCache();
+                //Running in offline mode now.
+                IsInOfflineMode = true;
+                OnMachinationsUpdate?.Invoke(this, null);
+            }
+            else
+            {
+                Debug.Log("MGL.Start: Connection achieved. Authentication request.");
+
+                //Authenticate to Machinations back-end.
+                EmitMachinationsAuthRequest();
+
+                yield return new WaitUntil(() => IsAuthenticated);
+
+                Debug.Log("MGL.Start: Authenticated. Sync start.");
+
+                //Send Game Init Requests for all registered machinationsUniqueID.
+                EmitMachinationsInitRequest();
+
+                yield return new WaitUntil(() => IsInitialized);
+
+                Debug.Log("MGL.Start: Machinations Backend Sync complete. Resuming game.");
+            }
+
+            //Un-Pause game.
+            Time.timeScale = 1;
+            AudioListener.pause = true;
+        }
+
+        #endregion
+
+        #region Internal Functionality
+
+        /// <summary>
+        /// Notifies all enrolled <see cref="MachinationsUP.Integration.GameObject.MachinationsGameObject"/> that
+        /// the MGL is now initialized.
+        /// </summary>
+        /// <param name="isRunningOffline">TRUE: the MGL is running in offline mode.</param>
+        static private void NotifyAboutMGLInitComplete (bool isRunningOffline = false)
+        {
+            //_gameObjects is converted into an Array because the collection MAY be modified inside Game Objects,
+            //which may create other Game Objects which will register to MGL.
+            List<MachinationsGameObject> gameObjects = new List<MachinationsGameObject>(_gameObjects.ToArray());
+            //Notify everybody.
+            foreach (MachinationsGameObject mgo in gameObjects)
+                mgo.MGLInitComplete(isRunningOffline);
+            //New Game Objects created & enrolled? Propagate notification everywhere.
+            while (gameObjects.Count != _gameObjects.Count)
+            {
+                foreach (MachinationsGameObject mgo in _gameObjects)
+                    if (!gameObjects.Contains(mgo))
+                    {
+                        gameObjects.Add(mgo);
+                        mgo.MGLInitComplete(isRunningOffline);
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Concatenates a Dictionary of Unique Machination IDs and their associated ElementBase to
+        /// the Game Layer's repository. All of the ElementBase in the repository will be initialized upon
+        /// game startup.
+        /// </summary>
+        /// <param name="targets"></param>
+        private void AddTargets (Dictionary<DiagramMapping, ElementBase> targets)
+        {
+            foreach (DiagramMapping diagramMapping in targets.Keys)
+            {
+                //Only add new targets.
+                if (_sourceElements.ContainsKey(diagramMapping)) continue;
+                _sourceElements.Add(diagramMapping, targets[diagramMapping]);
+            }
+        }
+
+        /// <summary>
+        /// Returns a string that can be later decomposed in order to find an element in a Machinations Diagram.
+        /// </summary>
+        /// <param name="binder"></param>
+        /// <param name="statesAssociation"></param>
+        /// <returns></returns>
+        virtual protected string GetMachinationsUniqueID (ElementBinder binder, StatesAssociation statesAssociation)
+        {
+            return binder.ParentGameObject.GameObjectName + "." + binder.GameObjectPropertyName + "." +
+                   (statesAssociation != null ? statesAssociation.Title : "N/A");
+        }
+
+        /// <summary>
+        /// Finds an ElementBase within the Diagram Mappings.
+        /// </summary>
+        /// <param name="elementBinder">The ElementBinder that should match the ElementBase.</param>
+        /// <param name="statesAssociation">The StatesAssociation to search with.</param>
+        virtual protected ElementBase FindSourceElement (ElementBinder elementBinder,
+            StatesAssociation statesAssociation = null)
+        {
+            ElementBase ret = null;
+            bool found = false;
+            //Search all Diagram Mappings to see which one matches the provided Binder and States Association.
+            foreach (DiagramMapping diagramMapping in _sourceElements.Keys)
+            {
+                if (diagramMapping.GameObjectName == elementBinder.ParentGameObject.GameObjectName &&
+                    diagramMapping.GameObjectPropertyName == elementBinder.GameObjectPropertyName &&
+                    diagramMapping.StatesAssoc == statesAssociation)
+                {
+                    ret = _sourceElements[diagramMapping];
+                    found = true;
+                    break;
+                }
+            }
+
+            //A DiagramMapping must have been found for this element.
+            if (!found)
+                throw new Exception("MGL.FindSourceElement: machinationsUniqueID '" +
+                                    GetMachinationsUniqueID(elementBinder, statesAssociation) +
+                                    "' not found in _sourceElements.");
+            //If no ElementBase was found.
+            if (found && ret == null)
+            {
+                //Search the Cache.
+                if (IsInOfflineMode && HaveCache)
+                    foreach (DiagramMapping diagramMapping in _cache.DiagramMappings)
+                    {
+                        if (diagramMapping.GameObjectName == elementBinder.ParentGameObject.GameObjectName &&
+                            diagramMapping.GameObjectPropertyName == elementBinder.GameObjectPropertyName)
+                        {
+                            return diagramMapping.CachedElementBase;
+                        }
+                    }
+
+                //Nothing found? Throw!
+                if (!isInOfflineMode || (IsInOfflineMode && StrictOfflineMode))
+                    throw new Exception("MGL.FindSourceElement: machinationsUniqueID '" +
+                                        GetMachinationsUniqueID(elementBinder, statesAssociation) +
+                                        "' has not been initialized.");
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// Updates the <see cref="_sourceElements"/> with values from the Machinations Back-end. Only initializes those values
+        /// that have been registered via <see cref="MachinationsUP.Integration.Inventory.DiagramMapping"/>. If entirely new
+        /// values come from the back-end, will throw an Exception.
+        /// </summary>
+        /// <param name="elementsFromBackEnd">List of <see cref="JSONObject"/> received from the Socket IO Component.</param>
+        /// <param name="updateFromDiagram">TRUE: update existing elements. If FALSE, will throw Exceptions on collisions.</param>
+        private void UpdateWithValuesFromMachinations (List<JSONObject> elementsFromBackEnd, bool updateFromDiagram = false)
+        {
+            //The response is an Array of key-value pairs PER Machination Diagram ID.
+            //Each of these maps to a certain member of _sourceElements.
+            foreach (JSONObject diagramElement in elementsFromBackEnd)
+            {
+                //Dictionary of SyncMsgs.JP_DIAGRAM_* and their value.
+                var elementProperties = new Dictionary<string, string>();
+                int i = 0;
+                //Get all properties in a Dictionary, since their order is not guaranteed in a list.
+                foreach (string machinationsPropertyName in diagramElement.keys)
+                    elementProperties.Add(machinationsPropertyName, diagramElement[i++].ToString().Replace("\"", ""));
+
+                //Find Diagram Mapping matching the provided Machinations Diagram ID.
+                DiagramMapping diagramMapping = null;
+                foreach (DiagramMapping dm in _sourceElements.Keys)
+                    if (dm.DiagramElementID == int.Parse(elementProperties["id"]))
+                    {
+                        diagramMapping = dm;
+                        break;
+                    }
+
+                //Couldn't find any Binding for this Machinations Diagram ID.
+                if (diagramMapping == null)
+                    throw new Exception("MGL.UpdateWithValuesFromMachinations: Got from the back-end a Machinations Diagram ID (" +
+                                        int.Parse(elementProperties["id"]) + ") for which there is no DiagramMapping.");
+
+                ElementBase elementBase = null;
+
+                //Populate value inside Machinations Element.
+                int iValue;
+                string sValue;
+                try
+                {
+                    iValue = int.Parse(elementProperties["resources"]);
+                    elementBase = new ElementBase(iValue);
+                    //Set MaxValue, if we have from.
+                    if (elementProperties.ContainsKey("capacity") && int.TryParse(elementProperties["capacity"],
+                        out iValue) && iValue != -1 && iValue != 0)
+                    {
+                        elementBase.MaxValue = iValue;
+                    }
+                }
+                catch
+                {
+                    sValue = elementProperties["label"];
+                    elementBase = new FormulaElement(sValue, false);
+                }
+
+                //Element already exists but not in Update mode?
+                if (_sourceElements[diagramMapping] != null && !updateFromDiagram)
+                    throw new Exception("MGL.UpdateWithValuesFromMachinations: A Source Element already exists for this DiagramMapping: " +
+                                        diagramMapping +
+                                        ". Perhaps you wanted to update it? Then, invoke this function with update: true.");
+
+                //This is the important line where the ElementBase is assigned to the Source Elements Dictionary, to be used for
+                //cloning elements in the future.
+                _sourceElements[diagramMapping] = elementBase;
+
+                //Caching active? Update the Cache.
+                if (!string.IsNullOrEmpty(cacheDirectoryName))
+                {
+                    diagramMapping.CachedElementBase = elementBase;
+                    if (!_cache.DiagramMappings.Contains(diagramMapping)) _cache.DiagramMappings.Add(diagramMapping);
+                }
+
+                //When changes occur in the Diagram, the Machinations Back-end will notify us.
+                if (updateFromDiagram)
+                    foreach (MachinationsGameObject mgo in _gameObjects)
+                        //When we find a registered Game Object that matches this Diagram Mapping asking it to update its Binder.
+                        if (mgo.GameObjectName == diagramMapping.GameObjectName)
+                            mgo.MGLUpdateBinder(diagramMapping);
+
+                Debug.Log("ElementBase created for '" + diagramMapping + "' with Base Value of: " +
+                          elementBase.BaseValue);
+            }
+
+            OnMachinationsUpdate?.Invoke(this, null);
+            //Caching active? Save the cache now.
+            if (!string.IsNullOrEmpty(cacheDirectoryName)) SaveCache();
+        }
+
+        /// <summary>
+        /// Saves the Cache.
+        /// </summary>
+        private void SaveCache ()
+        {
+            string cachePath = Path.Combine(Application.dataPath, "MachinationsCache", cacheDirectoryName);
+            string cacheFilePath = Path.Combine(cachePath, "Cache.xml");
+            Directory.CreateDirectory(cachePath);
+            Debug.Log("MGL.SaveCache using file: " + cacheFilePath);
+
+            DataContractSerializer dcs = new DataContractSerializer(typeof(MCache));
+            var settings = new XmlWriterSettings {Indent = true, NewLineOnAttributes = true};
+            XmlWriter xmlWriter = XmlWriter.Create(cacheFilePath, settings);
+            dcs.WriteObject(xmlWriter, _cache);
+            xmlWriter.Close();
+        }
+
+        /// <summary>
+        /// Loads the Cache located at <see cref="cacheDirectoryName"/>. Applies it over <see cref="_sourceElements"/>.
+        /// </summary>
+        private void LoadCache ()
+        {
+            string cacheFilePath = Path.Combine(Application.dataPath, "MachinationsCache", cacheDirectoryName, "Cache.xml");
+            if (!File.Exists(cacheFilePath))
+            {
+                Debug.Log("MGL.LoadCache DOES NOT EXIST: " + cacheFilePath);
+                _cache = null;
+                return;
+            }
+
+            Debug.Log("MGL.LoadCache using file: " + cacheFilePath);
+
+            //Deserialize Cache.
+            DataContractSerializer dcs = new DataContractSerializer(typeof(MCache));
+            FileStream fs = new FileStream(cacheFilePath, FileMode.Open);
+            _cache = (MCache) dcs.ReadObject(fs);
+
+            //Applying Cache.
+            foreach (DiagramMapping dm in _cache.DiagramMappings)
+            {
+                //Cloning list elements because we'll be tampering with the collection.
+                List<DiagramMapping> sourceKeys = new List<DiagramMapping>(_sourceElements.Keys.ToArray());
+                for (int i = 0; i < sourceKeys.Count; i++)
+                {
+                    DiagramMapping dms = sourceKeys[i];
+                    if (
+                        dms.GameObjectName == dm.GameObjectName &&
+                        dms.GameObjectPropertyName == dm.GameObjectPropertyName &&
+                        (dms.StatesAssoc == null ||
+                         (dms.StatesAssoc != null && dms.StatesAssoc.ToString() == dm.StatesAssoc.ToString()))
+                    )
+                    {
+                        _sourceElements[dms] = dm.CachedElementBase;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Socket IO - Communication with Machinations Back-end
+
+        /// <summary>
+        /// Handles event emission for a MachinationsGameObject.
+        /// </summary>
+        /// <param name="mgo">MachinationsGameObject that emitted the event.</param>
+        /// <param name="evnt">The event that was emitted.</param>
+        public void EmitEvent (MachinationsGameObject mgo, string evnt)
+        {
+            var sync = new Dictionary<string, string>
+            {
+                {SyncMsgs.JK_EVENT_GAME_OBJ_NAME, mgo.GameObjectName},
+                {SyncMsgs.JK_EVENT_GAME_EVENT, evnt}
+            };
+            _socket.Emit(SyncMsgs.SEND_GAME_EVENT, new JSONObject(sync));
+        }
+
+        /// <summary>
+        /// Emits the 'Game Auth Request' Socket event.
+        /// </summary>
+        private void EmitMachinationsAuthRequest ()
+        {
+            _pendingResponses++;
+            var initRequest = new Dictionary<string, string>
+            {
+                {SyncMsgs.JK_AUTH_GAME_NAME, gameName},
+                {SyncMsgs.JK_AUTH_DIAGRAM_TOKEN, diagramToken}
+            };
+            _socket.Emit(SyncMsgs.SEND_API_AUTHORIZE, new JSONObject(initRequest));
+        }
+
+        /// <summary>
+        /// Emits the 'Game Init Request' Socket event.
+        /// </summary>
+        private void EmitMachinationsInitRequest ()
+        {
+            //Make sure we're stopping the game until the answer comes back.
+            _pendingResponses++;
+
+            //Init Request components will be stored as top level items in this Dictionary.
+            var initRequest = new Dictionary<string, JSONObject>();
+
+            //Create individual JSON Objects for each Machination element to retrieve.
+            //This is an Array because this is what the JSON Object Library expects.
+            JSONObject[] keys = new JSONObject [_sourceElements.Keys.Count];
+            int i = 0;
+            foreach (DiagramMapping diagramMapping in _sourceElements.Keys)
+            {
+                var item = new Dictionary<string, JSONObject>();
+                item.Add("id", new JSONObject(diagramMapping.DiagramElementID));
+                //Create JSON Objects for all props that we have to retrieve.
+                string[] sprops = {"label", "activation", "action", "resources", "capacity", "overflow"};
+                List<JSONObject> props = new List<JSONObject>();
+                foreach (string sprop in sprops)
+                    props.Add(JSONObject.CreateStringObject(sprop));
+                //Add props field.
+                item.Add("props", new JSONObject(props.ToArray()));
+
+                keys[i++] = new JSONObject(item);
+            }
+
+            //Finalize request by adding all top level items.
+            initRequest.Add(SyncMsgs.JK_AUTH_DIAGRAM_TOKEN, JSONObject.CreateStringObject(diagramToken));
+            //Wrapping the keys Array inside a JSON Object.
+            initRequest.Add(SyncMsgs.JK_INIT_MACHINATIONS_IDS, new JSONObject(keys));
+
+            _socket.Emit(SyncMsgs.SEND_GAME_INIT, new JSONObject(initRequest));
+        }
+
+        private void OnSocketOpen (SocketIOEvent e)
+        {
+            Debug.Log("[SocketIO] Open received: " + e.name + " " + e.data);
+        }
+
+        /// <summary>
+        /// The Machinations Back-end has answered.
+        /// </summary>
+        /// <param name="e">Contains Init Data.</param>
+        private void OnGameInitResponse (SocketIOEvent e)
+        {
+            Debug.Log("Received OnGameInitResponse DATA: " + e.data);
+
+            //The answer from the back-end may contain multiple payloads.
+            foreach (string payloadKey in e.data.keys)
+                //For now, only interested in the "SyncMsgs.JK_DIAGRAM_ELEMENTS_LIST" payload.
+                if (payloadKey == SyncMsgs.JK_DIAGRAM_ELEMENTS_LIST)
+                    UpdateWithValuesFromMachinations(e.data[SyncMsgs.JK_DIAGRAM_ELEMENTS_LIST].list);
+
+            //Decrease number of responses pending from the back-end.
+            _pendingResponses--;
+            //When reaching 0, initialization is considered complete.
+            if (_pendingResponses == 0)
+                IsInitialized = true;
+        }
+
+        /// <summary>
+        /// Occurs when the game has received an update from Machinations because some Diagram elements were changed.
+        /// </summary>
+        /// <param name="e">Contains Init Data.</param>
+        private void OnDiagramElementsUpdated (SocketIOEvent e)
+        {
+            //The answer from the back-end may contain multiple payloads.
+            foreach (string payloadKey in e.data.keys)
+                //For now, only interested in the "SyncMsgs.JK_DIAGRAM_ELEMENTS_LIST" payload.
+                if (payloadKey == SyncMsgs.JK_DIAGRAM_ELEMENTS_LIST)
+                    UpdateWithValuesFromMachinations(e.data[SyncMsgs.JK_DIAGRAM_ELEMENTS_LIST].list, true);
+        }
+
+        /// <summary>
+        /// The Machinations Back-end has answered.
+        /// </summary>
+        /// <param name="e">Contains Init Data.</param>
+        private void OnAuthSuccess (SocketIOEvent e)
+        {
+            Debug.Log("Game Auth Request Result: " + e.data);
+            _pendingResponses--;
+            //Initialization complete.
+            if (_pendingResponses == 0)
+                IsAuthenticated = true;
+        }
+
+        private void OnAuthDeny (SocketIOEvent e)
+        {
+            Debug.Log("Game Auth Request Failure: " + e.data);
+        }
+
+        private void OnSocketError (SocketIOEvent e)
+        {
+            Debug.Log("[SocketIO] !!!! Error received: " + e.name + " DATA: " + e.data + " ");
+            _pendingResponses--;
+            _connectionAborted = true;
+            _socket.autoConnect = false;
+        }
+
+        private void OnSocketClose (SocketIOEvent e)
+        {
+            Debug.Log("[SocketIO] !!!! Close received: " + e.name + " DATA:" + e.data);
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Declares a Manifest before a Game Object instantiation can add it to the MachinationsGameLayer.
+        /// This is used to make sure that all Game Objects are ready for use after MachinationsGameLayer Initialization.
+        /// </summary>
+        /// <param name="manifest"></param>
+        static public void DeclareManifest (MachinationsGameObjectManifest manifest)
+        {
+            Debug.Log("MGL.DeclareManifest: " + manifest);
+            Instance.AddTargets(manifest.GetMachinationsDiagramTargets());
+        }
+
+        /// <summary>
+        /// Registers a MachinationsGameObject that the Game Layer can keep track of.
+        /// </summary>
+        /// <param name="machinationsGameObject"></param>
+        static public void EnrollGameObject (MachinationsGameObject machinationsGameObject)
+        {
+            _gameObjects.Add(machinationsGameObject);
+            if (machinationsGameObject is MachinationsGameAwareObject gameAwareObject)
+                _gameAwareObjects.Add(gameAwareObject);
+            //If the MGL was already initialized OR is running in offline mode,
+            //notifying this object that it can retrieve whatever information it needs from MGL.
+            if (IsInitialized || IsInOfflineMode)
+                machinationsGameObject.MGLInitComplete();
+        }
+
+        /// <summary>
+        /// Creates an <see cref="MachinationsUP.Integration.Elements.ElementBase"/>.
+        /// </summary>
+        /// <param name="elementBinder">The <see cref="MachinationsUP.Integration.Binder.ElementBinder"/> for which
+        /// the <see cref="MachinationsUP.Integration.Elements.ElementBase"/> is to be created.</param>
+        /// <param name="statesAssociation">OPTIONAL. The StatesAssociation for which the ElementBase is to be created.
+        /// If this is not provided, the default value of NULL means that the ElementBase will use "N/A" as Title
+        /// in the <see cref="MachinationsUP.Engines.Unity.MachinationsGameLayer"/> Init Request.</param>
+        public ElementBase CreateElement (ElementBinder elementBinder, StatesAssociation statesAssociation = null)
+        {
+            ElementBase sourceElement = FindSourceElement(elementBinder, statesAssociation);
+            //Not found elements are accepted in Offline Mode.
+            if (sourceElement == null)
+            {
+                if (isInOfflineMode) return null;
+                throw new Exception("MGL.CreateElement: Unhandled null Template Element.");
+            }
+
+            //Initialize the ElementBase by cloning it from the sourceElement.
+            var newElement = sourceElement.Clone();
+
+            Debug.Log("MGL.CreateValue complete for machinationsUniqueID '" +
+                      GetMachinationsUniqueID(elementBinder, statesAssociation) + "'.");
+
+            return newElement;
+        }
+
+        /// <summary>
+        /// Returns the Source <see cref="MachinationsUP.Integration.Elements.ElementBase"/> found at the requested DiagramMapping.
+        /// If Offline & caching active, will return the value previously loaded from the Cache.
+        /// If Offline & caching inactive, returns the DefaultElementBase, if any was defined.
+        /// Throws if cannot find any Source ElementBase.
+        /// </summary>
+        /// <param name="diagramMapping"><see cref="MachinationsUP.Integration.Inventory.DiagramMapping"/> whose
+        /// <see cref="MachinationsUP.Integration.Elements.ElementBase"/> to return.</param>
+        /// <returns></returns>
+        static public ElementBase GetSourceElementBase (DiagramMapping diagramMapping)
+        {
+            if (_sourceElements.ContainsKey(diagramMapping) && _sourceElements[diagramMapping] != null)
+                return _sourceElements[diagramMapping];
+            //When Offline, we may return the Default Element Base.
+            if (IsInOfflineMode && diagramMapping.DefaultElementBase != null)
+                return diagramMapping.DefaultElementBase;
+
+            throw new Exception("MGL.GetSourceElementBase: cannot find any Source Element Base for " + diagramMapping);
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// TRUE when all Init-related tasks have been completed.
+        /// </summary>
+        static private bool IsAuthenticated { set; get; }
+
+        static private bool isInitialized;
+
+        /// <summary>
+        /// TRUE when all Init-related tasks have been completed.
+        /// </summary>
+        static private bool IsInitialized
+        {
+            set
+            {
+                if (value)
+                {
+                    Debug.Log("MachinationsGameLayer Initialization Complete!");
+                    NotifyAboutMGLInitComplete();
+                }
+
+                isInitialized = value;
+            }
+            get => isInitialized;
+        }
+
+        static private bool isInOfflineMode;
+
+        /// <summary>
+        /// MGL is running in offline mode.
+        /// </summary>
+        static public bool IsInOfflineMode
+        {
+            set
+            {
+                isInOfflineMode = value;
+                if (value)
+                {
+                    Debug.Log("MachinationsGameLayer is now in Offline Mode!");
+                    NotifyAboutMGLInitComplete(isInOfflineMode);
+                }
+            }
+            get => isInOfflineMode;
+        }
+
+        /// <summary>
+        /// Returns the current Game State, if any <see cref="IGameLifecycleProvider"/> is avaialble.
+        /// </summary>
+        /// <returns></returns>
+        static public GameStates GetGameState ()
+        {
+            if (Instance._gameLifecycleProvider == null)
+                throw new Exception("MGL no IGameLifecycleProvider available.");
+            return Instance._gameLifecycleProvider.GetGameState();
+        }
+
+        /// <summary>
+        /// Returns if the MGL has any cache loaded.
+        /// </summary>
+        static public bool HaveCache => !string.IsNullOrEmpty(Instance.cacheDirectoryName) && _cache != null;
+
+        #endregion
+
+    }
+}

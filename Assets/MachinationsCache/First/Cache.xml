@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Machinations_x0020_Cache xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.machinations.io">
+  <DiagramMappings>
+    <Machinations_x0020_Diagram_x0020_Mapping>
+      <CachedElementBase>
+        <BaseValue>31</BaseValue>
+        <CurrentValue>31</CurrentValue>
+        <MaxValue>50</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>19</DiagramElementID>
+      <GameObjectName>Ruby</GameObjectName>
+      <GameObjectPropertyName>Health</GameObjectPropertyName>
+      <StatesAssoc xmlns:d4p1="http://schemas.datacontract.org/2004/07/MachinationsUP.GameEngineAPI.States" />
+    </Machinations_x0020_Diagram_x0020_Mapping>
+    <Machinations_x0020_Diagram_x0020_Mapping>
+      <CachedElementBase>
+        <BaseValue>6</BaseValue>
+        <CurrentValue>6</CurrentValue>
+        <MaxValue>-1</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>23</DiagramElementID>
+      <GameObjectName>EnemySpawner</GameObjectName>
+      <GameObjectPropertyName>ExtraEnemies</GameObjectPropertyName>
+      <StatesAssoc xmlns:d4p1="http://schemas.datacontract.org/2004/07/MachinationsUP.GameEngineAPI.States"
+        i:nil="true" />
+    </Machinations_x0020_Diagram_x0020_Mapping>
+    <Machinations_x0020_Diagram_x0020_Mapping>
+      <CachedElementBase>
+        <BaseValue>290</BaseValue>
+        <CurrentValue>290</CurrentValue>
+        <MaxValue>-1</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>74</DiagramElementID>
+      <GameObjectName>Enemy</GameObjectName>
+      <GameObjectPropertyName>Health</GameObjectPropertyName>
+      <StatesAssoc xmlns:d4p1="http://schemas.datacontract.org/2004/07/MachinationsUP.GameEngineAPI.States"
+        i:nil="true" />
+    </Machinations_x0020_Diagram_x0020_Mapping>
+    <Machinations_x0020_Diagram_x0020_Mapping>
+      <CachedElementBase
+        i:type="Machinations_x0020_Formula">
+        <BaseValue>42</BaseValue>
+        <CurrentValue>42</CurrentValue>
+        <MaxValue>-1</MaxValue>
+        <MinValue>0</MinValue>
+        <Formula xmlns:d5p1="http://schemas.datacontract.org/2004/07/MachinationsUP.Integration.Elements.Formula" />
+        <FormulaString>20+D24</FormulaString>
+        <RerunFormulaAtEveryAccess>true</RerunFormulaAtEveryAccess>
+        <RerunFormulaAtReset>false</RerunFormulaAtReset>
+      </CachedElementBase>
+      <DiagramElementID>76</DiagramElementID>
+      <GameObjectName>Projectile</GameObjectName>
+      <GameObjectPropertyName>Damage</GameObjectPropertyName>
+      <StatesAssoc xmlns:d4p1="http://schemas.datacontract.org/2004/07/MachinationsUP.GameEngineAPI.States" />
+    </Machinations_x0020_Diagram_x0020_Mapping>
+    <Machinations_x0020_Diagram_x0020_Mapping>
+      <CachedElementBase>
+        <BaseValue>20</BaseValue>
+        <CurrentValue>20</CurrentValue>
+        <MaxValue>296</MaxValue>
+        <MinValue>0</MinValue>
+      </CachedElementBase>
+      <DiagramElementID>102</DiagramElementID>
+      <GameObjectName>Ruby</GameObjectName>
+      <GameObjectPropertyName>Speed</GameObjectPropertyName>
+      <StatesAssoc xmlns:d4p1="http://schemas.datacontract.org/2004/07/MachinationsUP.GameEngineAPI.States" />
+    </Machinations_x0020_Diagram_x0020_Mapping>
+  </DiagramMappings>
+</Machinations_x0020_Cache>
