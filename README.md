@@ -6,7 +6,7 @@ Quick installation steps:
 
 1. Install the Unity 3D Engine (more info below).
 2. Open this repo with Unity 3D (add this directory in Unity Hub).
-3. Open Ruby's Adventure Machinations [diagram](www.machinations.io) in your web browser.
+3. Open Ruby's Adventure Machinations [diagram](https://www.machinations.io) in your web browser.
 4. Run the game in Unity and change `Player HP` in the diagram.
 
 Reference links:
