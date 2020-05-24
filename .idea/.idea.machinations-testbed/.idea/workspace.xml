@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88f8f797-bf1d-4885-9ac5-77f81d10ac46" name="Default Changelist" comment="a" />
+    <list default="true" id="88f8f797-bf1d-4885-9ac5-77f81d10ac46" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/MachinationsCache/MyCacheDirectory/Cache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MachinationsCache/MyCacheDirectory/Cache.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/ClientSslConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/HttpListenerRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/Cookie.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Enemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Net/WebSockets/HttpListenerWebSocketContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/c7/49987bcc/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ThirdParty/SocketIO/WebsocketSharp/Server/WebSocketServiceHost.cs" root0="FORCE_HIGHLIGHTING" />
@@ -99,6 +102,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/24/0502bd1d/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/7d/ea8a6f89/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D815B7EF-AC42-4EEB-8E05-3965CCCB1F98/ac/cbd2a43f/Time.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/862B9365-843C-4BF1-BA93-210C124BB523/ab/5ba60463/SslProtocols.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/RubyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/437BA245-D840-4784-B9FB-AB9B439AC908/d9/f69ab869/Int32.cs" root0="SKIP_HIGHLIGHTING" />
@@ -176,7 +180,6 @@
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIHealthBar.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Manifest/MachinationsGameObjectManifest.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Projectile.cs" />
-        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIConsole.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/FloatingTextController.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/FloatingText.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Manifest/DiagramMapping.cs" />
@@ -184,22 +187,23 @@
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/EnemyHealthBar.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/Cache.cs" />
-        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameAwareObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/DiagramMapping.cs" />
-        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/ElementBase.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Inventory/MCache.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/States/StatesAssociation.cs" />
-        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/RubyController.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/GameObject/GameObjectStates.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/GameEngineAPI/Game/GameStates.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/FormulaElement.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Members/DiceMember.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/Members/MemberBase.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/Formula/MachinationsFormula.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Elements/ElementBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameObject.cs" />
         <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Engines/Unity/MachinationsGameLayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/GameObject/MachinationsGameAwareObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/RubyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/ExampleGames/RubyAdventure2DBeginner/UI/UIConsole.cs" />
       </list>
     </option>
   </component>
@@ -275,6 +279,10 @@
       <workItem from="1589304901075" duration="665000" />
       <workItem from="1589308214864" duration="30755000" />
       <workItem from="1589468680854" duration="3263000" />
+      <workItem from="1589775946270" duration="16197000" />
+      <workItem from="1590160898627" duration="5398000" />
+      <workItem from="1590238164553" duration="654000" />
+      <workItem from="1590294365029" duration="2902000" />
     </task>
     <servers />
   </component>
@@ -311,70 +319,78 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="92" y="92" width="1736" height="896" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588566868511" />
-    <state width="1876" height="382" key="GridCell.Tab.0.bottom" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.0.bottom" timestamp="1590239523890">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.0.center" timestamp="1589460850487">
+    <state width="2516" height="522" key="GridCell.Tab.0.bottom/0.0.1920.1080/0.-1440.2560.1440@0.-1440.2560.1440" timestamp="1589889844630" />
+    <state width="1876" height="345" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523890" />
+    <state width="1876" height="345" key="GridCell.Tab.0.center" timestamp="1590239523890">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850487" />
-    <state width="1876" height="382" key="GridCell.Tab.0.left" timestamp="1589460850485">
+    <state width="2516" height="522" key="GridCell.Tab.0.center/0.0.1920.1080/0.-1440.2560.1440@0.-1440.2560.1440" timestamp="1589889844630" />
+    <state width="1876" height="345" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523890" />
+    <state width="1876" height="345" key="GridCell.Tab.0.left" timestamp="1590239523890">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850485" />
-    <state width="1876" height="382" key="GridCell.Tab.0.right" timestamp="1589460850487">
+    <state width="2516" height="522" key="GridCell.Tab.0.left/0.0.1920.1080/0.-1440.2560.1440@0.-1440.2560.1440" timestamp="1589889844629" />
+    <state width="1876" height="345" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523890" />
+    <state width="1876" height="345" key="GridCell.Tab.0.right" timestamp="1590239523890">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850487" />
-    <state width="1876" height="382" key="GridCell.Tab.1.bottom" timestamp="1589460850488">
+    <state width="2516" height="522" key="GridCell.Tab.0.right/0.0.1920.1080/0.-1440.2560.1440@0.-1440.2560.1440" timestamp="1589889844630" />
+    <state width="1876" height="345" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523890" />
+    <state width="1876" height="345" key="GridCell.Tab.1.bottom" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.1.center" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.1.center" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.1.left" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.1.left" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.1.right" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.1.right" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.2.bottom" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.2.bottom" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.2.center" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.2.center" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.2.left" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.2.left" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.2.right" timestamp="1589460850488">
+    <state width="1876" height="345" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.2.right" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850488" />
-    <state width="1876" height="382" key="GridCell.Tab.3.bottom" timestamp="1589460850489">
+    <state width="1876" height="345" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.3.bottom" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.3.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
-    <state width="1876" height="382" key="GridCell.Tab.3.center" timestamp="1589460850489">
+    <state width="1876" height="345" key="GridCell.Tab.3.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.3.center" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.3.center/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
-    <state width="1876" height="382" key="GridCell.Tab.3.left" timestamp="1589460850489">
+    <state width="1876" height="345" key="GridCell.Tab.3.center/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.3.left" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.3.left/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
-    <state width="1876" height="382" key="GridCell.Tab.3.right" timestamp="1589460850489">
+    <state width="1876" height="345" key="GridCell.Tab.3.left/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state width="1876" height="345" key="GridCell.Tab.3.right" timestamp="1590239523894">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1876" height="382" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1589460850489" />
+    <state width="1876" height="345" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590239523894" />
+    <state x="390" y="250" key="RollbackChangesDialog" timestamp="1590346483348">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="390" y="250" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1590346483348" />
     <state x="465" y="189" key="SettingsEditor" timestamp="1588654095319">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -403,29 +419,12 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="620" y="256" width="672" height="677" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589316922240" />
-    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1589469501525">
+    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1590234686196">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1589469501525" />
+    <state x="627" y="241" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1590234686196" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs</url>
-          <line>193</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/2D Beginner/Scripts/MachinationsUP/Integration/Binder/ElementBinder.cs" initialLine="198">
-            <startOffsets>
-              <option value="9434" />
-            </startOffsets>
-            <endOffsets>
-              <option value="9549" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="dm.CachedElementBase" />

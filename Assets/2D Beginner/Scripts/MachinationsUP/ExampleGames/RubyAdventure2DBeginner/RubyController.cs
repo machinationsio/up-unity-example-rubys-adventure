@@ -94,6 +94,7 @@ namespace MachinationsUP.ExampleGames.RubyAdventure2DBeginner
 
             //Ask the debug console to keep track of this item.
             UIConsole.Instance.AddTrackedItem(_manifest.GetDiagramMapping(M_SPEED));
+            UIConsole.Instance.AddTrackedItem(_manifest.GetDiagramMapping(M_HEALTH));
             //Update Health bar with the proper value.
             UIHealthBar.Instance.SetNumericValue(_mgao[M_HEALTH].Value);
             //Subscribe to data notifications from MGL so that we can update UI elements.

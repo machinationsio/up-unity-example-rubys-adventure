@@ -483,8 +483,9 @@ namespace MachinationsUP.Engines.Unity
                     if (!_cache.DiagramMappings.Contains(diagramMapping)) _cache.DiagramMappings.Add(diagramMapping);
                 }
 
-                //When changes occur in the Diagram, the Machinations Back-end will notify us.
+                //When changes occur in the Diagram, the Machinations Back-end will notify UP.
                 if (updateFromDiagram)
+                    //In turn, UP will notify all registered Machinations Game Objects.
                     foreach (MachinationsGameObject mgo in _gameObjects)
                         //When we find a registered Game Object that matches this Diagram Mapping asking it to update its Binder.
                         if (mgo.GameObjectName == diagramMapping.GameObjectName)
@@ -494,6 +495,7 @@ namespace MachinationsUP.Engines.Unity
                           elementBase.BaseValue);
             }
 
+            //Send Update notification to all listeners.
             OnMachinationsUpdate?.Invoke(this, null);
             //Caching active? Save the cache now.
             if (!string.IsNullOrEmpty(cacheDirectoryName)) SaveCache();

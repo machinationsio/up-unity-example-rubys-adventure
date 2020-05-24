@@ -38,12 +38,16 @@ public class UIConsole : MonoBehaviour
         foreach (DiagramMapping dm in _trackedItems)
         {
             ElementBase eb = MachinationsGameLayer.GetSourceElementBase(dm);
-            text += dm.GameObjectName + "." + dm.GameObjectPropertyName + " = " + eb + "\r\n";
             //Update UI Health Bar of Ruby.
             if (dm.GameObjectName == "Ruby" && dm.GameObjectPropertyName == "Health")
             {
                 UIHealthBar.Instance.SetNumericValue(eb.BaseValue);
                 UIHealthBar.Instance.SetPercentValueOf1(eb.CurrentValue / (float) eb.BaseValue);
+            }
+            //For other values, write them in the console.
+            else
+            {
+                text += dm.GameObjectName + "." + dm.GameObjectPropertyName + " = " + eb + "\r\n";
             }
         }
         consoleText.text = text;

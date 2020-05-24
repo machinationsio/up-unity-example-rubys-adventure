@@ -102,7 +102,10 @@ namespace MachinationsUP.Integration.GameObject
             NotifyMGLReceivedData();
         }
 
-
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="diagramMapping"></param>
         virtual internal void MGLUpdateBinder (DiagramMapping diagramMapping)
         {
             //Ask the necessary Binder to go get its ElementBase.

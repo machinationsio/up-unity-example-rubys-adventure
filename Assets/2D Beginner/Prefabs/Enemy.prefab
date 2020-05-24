@@ -233,7 +233,7 @@ MonoBehaviour:
   speed: 2
   timeToChange: 2
   horizontal: 1
-  timeToFlick: 1
+  timeToFlick: 1000
   smokeParticleEffect: {fileID: 7972057267707664465}
   fixedParticleEffect: {fileID: 2688776450615711917, guid: 96e9cd9955be74842b5d6b2e427ffe16,
     type: 3}

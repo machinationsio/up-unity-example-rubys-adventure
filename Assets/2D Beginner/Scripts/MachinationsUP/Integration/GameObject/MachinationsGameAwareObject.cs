@@ -65,6 +65,8 @@ namespace MachinationsUP.Integration.GameObject
         {
             //Ask the Binder to update exactly this desired StatesAssociation.
             _binders[diagramMapping.GameObjectPropertyName].GetElementBaseFromMGL(diagramMapping.StatesAssoc, true);
+            //Notify any listeners of base.OnMGLReceivedData.
+            NotifyMGLReceivedData();
         }
 
         #region Implementation of IGameLifecycleSubscriber
