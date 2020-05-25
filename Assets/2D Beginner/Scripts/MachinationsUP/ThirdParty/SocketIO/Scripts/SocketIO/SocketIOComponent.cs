@@ -107,6 +107,8 @@ namespace SocketIO
         private object ackQueueLock;
         private Queue<Packet> ackQueue;
 
+        private string _userKey;
+
         #endregion
 
 #if SOCKET_IO_DEBUG
@@ -117,6 +119,24 @@ namespace SocketIO
 
         public void Awake ()
         {
+
+            //Init();
+#if SOCKET_IO_DEBUG
+			if(debugMethod == null) { debugMethod = Debug.Log; };
+#endif
+        }
+
+        public void Start ()
+        {
+            //MUST PERFORM INIT IN AWAKE IF YOU WANT THIS TO WORK.
+            // if (autoConnect)
+            // {
+            //     Connect();
+            // }
+        }
+
+        public void Init ()
+        {
             encoder = new Encoder();
             decoder = new Decoder();
             parser = new Parser();
@@ -125,7 +145,7 @@ namespace SocketIO
             sid = null;
             packetId = 0;
 
-            ws = new WebSocket(url);
+            ws = new WebSocket(url + (string.IsNullOrEmpty(_userKey) ? "" : "&token=" + _userKey));
 
             if (pathToX509Certificate != "")
             {
@@ -147,18 +167,6 @@ namespace SocketIO
             ackQueue = new Queue<Packet>();
 
             connected = false;
-
-#if SOCKET_IO_DEBUG
-			if(debugMethod == null) { debugMethod = Debug.Log; };
-#endif
-        }
-
-        public void Start ()
-        {
-            if (autoConnect)
-            {
-                Connect();
-            }
         }
 
         public void Update ()
@@ -544,6 +552,11 @@ namespace SocketIO
         }
 
         #endregion
+
+        public void SetUserKey (string userKey)
+        {
+            _userKey = userKey;
+        }
 
     }
 }

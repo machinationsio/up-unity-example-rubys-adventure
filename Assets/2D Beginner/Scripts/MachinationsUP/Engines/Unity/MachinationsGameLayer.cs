@@ -31,6 +31,12 @@ namespace MachinationsUP.Engines.Unity
         #region Editor-Defined
 
         /// <summary>
+        /// The User Key under which to make all API calls. This can be retrieved from
+        /// the Machinations product.
+        /// </summary>
+        public string userKey;
+
+        /// <summary>
         /// Game name is be used for associating a game with multiple diagrams.
         /// [TENTATIVE UPCOMING SUPPORT]
         /// </summary>
@@ -255,6 +261,8 @@ namespace MachinationsUP.Engines.Unity
             //TODO: during development, fail fast on Socket error. Remove @ release.
             SocketIOComponent.MaxRetryCountForConnect = 1;
             _socket = go.GetComponent<SocketIOComponent>();
+            _socket.SetUserKey(userKey);
+            _socket.Init();
             _socket.On("open", OnSocketOpen);
             _socket.On(SyncMsgs.RECEIVE_AUTH_SUCCESS, OnAuthSuccess);
             _socket.On(SyncMsgs.RECEIVE_AUTH_DENY, OnAuthDeny);
@@ -262,6 +270,7 @@ namespace MachinationsUP.Engines.Unity
             _socket.On(SyncMsgs.RECEIVE_DIAGRAM_ELEMENTS_UPDATED, OnDiagramElementsUpdated);
             _socket.On("error", OnSocketError);
             _socket.On("close", OnSocketClose);
+            _socket.Connect();
 
             Debug.Log("MGL.Start: Initiating connection to Machinations Backend.");
 
