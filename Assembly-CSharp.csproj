@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EC7908F1-3C86-78F8-7355-3BC444DD288C}</ProjectGuid>
+    <ProjectGuid>{E3EE6E28-0548-AE82-B0C3-858C1856E847}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -192,11 +192,6 @@
      <Compile Include="Assets\2D Beginner\Scripts\MachinationsUP\ThirdParty\SocketIO\WebsocketSharp\WebSocketException.cs" />
      <Compile Include="Assets\2D Beginner\Scripts\MachinationsUP\ThirdParty\SocketIO\WebsocketSharp\WebSocketFrame.cs" />
      <Compile Include="Assets\2D Beginner\Scripts\MachinationsUP\ThirdParty\SocketIO\WebsocketSharp\WebSocketState.cs" />
-     <Compile Include="Assets\2D Beginner\Scripts\WWWWWWWWWWWWWWWW.cs" />
-     <Compile Include="Assets\2D Beginner\Scripts\WWWWWWWWWWWWWWWWW.cs" />
-     <Compile Include="Assets\2D Beginner\Scripts\WWWWWWWWWWWWWWWWWW.cs" />
-     <Compile Include="Assets\2D Beginner\Scripts\WWWWWWWWWWWWWWWWWWW.cs" />
-     <Compile Include="Assets\2D Beginner\Scripts\WWWWWWWWWWWWWWWWWWWW.cs" />
      <Compile Include="Assets\2D Beginner\TutorialInfo\Scripts\Readme.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -221,67 +216,67 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Cinemachine">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.XR.LegacyInputHelpers">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.SpatialTracking">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.cinemachine.editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.XR.LegacyInputHelpers">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/2019.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -461,19 +456,19 @@
  <HintPath>C:/Program Files/Unity/2019.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>D:/Coding/Machinations/web-machinations/services/api-plugins/unity/machinations-testbed/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>D:/Coding/Machinations/public-machinations/up-unity-example-rubys-adventure/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/2019.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

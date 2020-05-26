@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
-using System.Xml.Serialization;
 using MachinationsUP.GameEngineAPI.Game;
 using MachinationsUP.GameEngineAPI.GameObject;
 using MachinationsUP.GameEngineAPI.States;
@@ -16,7 +15,6 @@ using MachinationsUP.Integration.GameObject;
 using MachinationsUP.Integration.Inventory;
 using SocketIO;
 using UnityEngine;
-using WebSocketSharp;
 
 namespace MachinationsUP.Engines.Unity
 {
@@ -256,22 +254,9 @@ namespace MachinationsUP.Engines.Unity
             //Pause game.
             Time.timeScale = 0;
             AudioListener.pause = true;
-            //Initialize socket.
-            GameObject go = GameObject.Find("SocketIO");
-            //TODO: during development, fail fast on Socket error. Remove @ release.
-            SocketIOComponent.MaxRetryCountForConnect = 1;
-            _socket = go.GetComponent<SocketIOComponent>();
-            _socket.SetUserKey(userKey);
-            _socket.Init();
-            _socket.On("open", OnSocketOpen);
-            _socket.On(SyncMsgs.RECEIVE_AUTH_SUCCESS, OnAuthSuccess);
-            _socket.On(SyncMsgs.RECEIVE_AUTH_DENY, OnAuthDeny);
-            _socket.On(SyncMsgs.RECEIVE_GAME_INIT, OnGameInitResponse);
-            _socket.On(SyncMsgs.RECEIVE_DIAGRAM_ELEMENTS_UPDATED, OnDiagramElementsUpdated);
-            _socket.On("error", OnSocketError);
-            _socket.On("close", OnSocketClose);
-            _socket.Connect();
 
+            //Init socket.
+            InitSocket();
             Debug.Log("MGL.Start: Initiating connection to Machinations Backend.");
 
             yield return new WaitUntil(() => _socket.IsConnected || _connectionAborted);
@@ -313,6 +298,28 @@ namespace MachinationsUP.Engines.Unity
         #endregion
 
         #region Internal Functionality
+
+        /// <summary>
+        /// Initializes the Socket IO component.
+        /// </summary>
+        private void InitSocket ()
+        {
+            //Initialize socket.
+            GameObject go = GameObject.Find("SocketIO");
+            //TODO: during development, fail fast on Socket error. Remove @ release.
+            SocketIOComponent.MaxRetryCountForConnect = 1;
+            _socket = go.GetComponent<SocketIOComponent>();
+            _socket.SetUserKey(userKey);
+            _socket.Init();
+            _socket.On("open", OnSocketOpen);
+            _socket.On(SyncMsgs.RECEIVE_AUTH_SUCCESS, OnAuthSuccess);
+            _socket.On(SyncMsgs.RECEIVE_AUTH_DENY, OnAuthDeny);
+            _socket.On(SyncMsgs.RECEIVE_GAME_INIT, OnGameInitResponse);
+            _socket.On(SyncMsgs.RECEIVE_DIAGRAM_ELEMENTS_UPDATED, OnDiagramElementsUpdated);
+            _socket.On("error", OnSocketError);
+            _socket.On("close", OnSocketClose);
+            _socket.Connect();
+        }
 
         /// <summary>
         /// Notifies all enrolled <see cref="MachinationsUP.Integration.GameObject.MachinationsGameObject"/> that
@@ -372,23 +379,19 @@ namespace MachinationsUP.Engines.Unity
         /// </summary>
         /// <param name="elementBinder">The ElementBinder that should match the ElementBase.</param>
         /// <param name="statesAssociation">The StatesAssociation to search with.</param>
-        virtual protected ElementBase FindSourceElement (ElementBinder elementBinder,
+        public ElementBase FindSourceElement (ElementBinder elementBinder,
             StatesAssociation statesAssociation = null)
         {
             ElementBase ret = null;
             bool found = false;
             //Search all Diagram Mappings to see which one matches the provided Binder and States Association.
             foreach (DiagramMapping diagramMapping in _sourceElements.Keys)
-            {
-                if (diagramMapping.GameObjectName == elementBinder.ParentGameObject.GameObjectName &&
-                    diagramMapping.GameObjectPropertyName == elementBinder.GameObjectPropertyName &&
-                    diagramMapping.StatesAssoc == statesAssociation)
+                if (diagramMapping.Matches(elementBinder, statesAssociation, HasCache))
                 {
                     ret = _sourceElements[diagramMapping];
                     found = true;
                     break;
                 }
-            }
 
             //A DiagramMapping must have been found for this element.
             if (!found)
@@ -399,15 +402,10 @@ namespace MachinationsUP.Engines.Unity
             if (found && ret == null)
             {
                 //Search the Cache.
-                if (IsInOfflineMode && HaveCache)
+                if (IsInOfflineMode && HasCache)
                     foreach (DiagramMapping diagramMapping in _cache.DiagramMappings)
-                    {
-                        if (diagramMapping.GameObjectName == elementBinder.ParentGameObject.GameObjectName &&
-                            diagramMapping.GameObjectPropertyName == elementBinder.GameObjectPropertyName)
-                        {
+                        if (diagramMapping.Matches(elementBinder, statesAssociation, true))
                             return diagramMapping.CachedElementBase;
-                        }
-                    }
 
                 //Nothing found? Throw!
                 if (!isInOfflineMode || (IsInOfflineMode && StrictOfflineMode))
@@ -440,40 +438,10 @@ namespace MachinationsUP.Engines.Unity
                     elementProperties.Add(machinationsPropertyName, diagramElement[i++].ToString().Replace("\"", ""));
 
                 //Find Diagram Mapping matching the provided Machinations Diagram ID.
-                DiagramMapping diagramMapping = null;
-                foreach (DiagramMapping dm in _sourceElements.Keys)
-                    if (dm.DiagramElementID == int.Parse(elementProperties["id"]))
-                    {
-                        diagramMapping = dm;
-                        break;
-                    }
+                DiagramMapping diagramMapping = GetDiagramMappingForID(elementProperties["id"]);
 
-                //Couldn't find any Binding for this Machinations Diagram ID.
-                if (diagramMapping == null)
-                    throw new Exception("MGL.UpdateWithValuesFromMachinations: Got from the back-end a Machinations Diagram ID (" +
-                                        int.Parse(elementProperties["id"]) + ") for which there is no DiagramMapping.");
-
-                ElementBase elementBase = null;
-
-                //Populate value inside Machinations Element.
-                int iValue;
-                string sValue;
-                try
-                {
-                    iValue = int.Parse(elementProperties["resources"]);
-                    elementBase = new ElementBase(iValue);
-                    //Set MaxValue, if we have from.
-                    if (elementProperties.ContainsKey("capacity") && int.TryParse(elementProperties["capacity"],
-                        out iValue) && iValue != -1 && iValue != 0)
-                    {
-                        elementBase.MaxValue = iValue;
-                    }
-                }
-                catch
-                {
-                    sValue = elementProperties["label"];
-                    elementBase = new FormulaElement(sValue, false);
-                }
+                //Get the Element Base based on the dictionary of Element Properties.
+                ElementBase elementBase = CreateElementFromProps(elementProperties);
 
                 //Element already exists but not in Update mode?
                 if (_sourceElements[diagramMapping] != null && !updateFromDiagram)
@@ -508,6 +476,55 @@ namespace MachinationsUP.Engines.Unity
             OnMachinationsUpdate?.Invoke(this, null);
             //Caching active? Save the cache now.
             if (!string.IsNullOrEmpty(cacheDirectoryName)) SaveCache();
+        }
+
+        /// <summary>
+        /// Retrieves the <see cref="DiagramMapping"/> for the requested Machinations Diagram ID.
+        /// </summary>
+        static private DiagramMapping GetDiagramMappingForID (string machinationsDiagramID)
+        {
+            DiagramMapping diagramMapping = null;
+            foreach (DiagramMapping dm in _sourceElements.Keys)
+                if (dm.DiagramElementID == int.Parse(machinationsDiagramID))
+                {
+                    return dm;
+                }
+
+            //Couldn't find any Binding for this Machinations Diagram ID.
+            if (diagramMapping == null)
+                throw new Exception("MGL.UpdateWithValuesFromMachinations: Got from the back-end a Machinations Diagram ID (" +
+                                    machinationsDiagramID + ") for which there is no DiagramMapping.");
+            return null;
+        }
+
+        /// <summary>
+        /// Creates an <see cref="ElementBase"/> based on the provided properties from the Machinations Back-end.
+        /// </summary>
+        /// <param name="elementProperties">Dictionary of Machinations-specific properties.</param>
+        private ElementBase CreateElementFromProps (Dictionary<string, string> elementProperties)
+        {
+            ElementBase elementBase;
+            //Populate value inside Machinations Element.
+            int iValue;
+            string sValue;
+            try
+            {
+                iValue = int.Parse(elementProperties["resources"]);
+                elementBase = new ElementBase(iValue);
+                //Set MaxValue, if we have from.
+                if (elementProperties.ContainsKey("capacity") && int.TryParse(elementProperties["capacity"],
+                    out iValue) && iValue != -1 && iValue != 0)
+                {
+                    elementBase.MaxValue = iValue;
+                }
+            }
+            catch
+            {
+                sValue = elementProperties["label"];
+                elementBase = new FormulaElement(sValue, false);
+            }
+
+            return elementBase;
         }
 
         /// <summary>
@@ -555,15 +572,8 @@ namespace MachinationsUP.Engines.Unity
                 for (int i = 0; i < sourceKeys.Count; i++)
                 {
                     DiagramMapping dms = sourceKeys[i];
-                    if (
-                        dms.GameObjectName == dm.GameObjectName &&
-                        dms.GameObjectPropertyName == dm.GameObjectPropertyName &&
-                        (dms.StatesAssoc == null ||
-                         (dms.StatesAssoc != null && dms.StatesAssoc.ToString() == dm.StatesAssoc.ToString()))
-                    )
-                    {
+                    if (dms.Matches(dm, true))
                         _sourceElements[dms] = dm.CachedElementBase;
-                    }
                 }
             }
         }
@@ -848,7 +858,7 @@ namespace MachinationsUP.Engines.Unity
         /// <summary>
         /// Returns if the MGL has any cache loaded.
         /// </summary>
-        static public bool HaveCache => !string.IsNullOrEmpty(Instance.cacheDirectoryName) && _cache != null;
+        static public bool HasCache => !string.IsNullOrEmpty(Instance.cacheDirectoryName) && _cache != null;
 
         #endregion
 
