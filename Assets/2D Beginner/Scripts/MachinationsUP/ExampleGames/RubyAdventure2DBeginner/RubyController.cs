@@ -98,10 +98,10 @@ namespace MachinationsUP.ExampleGames.RubyAdventure2DBeginner
             //Update Health bar with the proper value.
             UIHealthBar.Instance.SetNumericValue(_mgao[M_HEALTH].Value);
             //Subscribe to data notifications from MGL so that we can update UI elements.
-            _mgao.OnMGLReceivedData += OnMGLReceivedData;
+            _mgao.OnBindersUpdated += BindersUpdated;
         }
 
-        private void OnMGLReceivedData (object sender, EventArgs e)
+        private void BindersUpdated (object sender, EventArgs e)
         {
             UIHealthBar.Instance.SetNumericValue(_mgao[M_HEALTH].Value);
         }

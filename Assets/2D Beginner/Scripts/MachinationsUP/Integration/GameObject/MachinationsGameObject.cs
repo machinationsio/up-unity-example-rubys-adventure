@@ -4,6 +4,7 @@ using MachinationsUP.Engines.Unity;
 using MachinationsUP.GameEngineAPI.Events;
 using MachinationsUP.GameEngineAPI.States;
 using MachinationsUP.Integration.Binder;
+using MachinationsUP.Integration.Elements;
 using MachinationsUP.Integration.Inventory;
 using MachinationsUP.SyncAPI;
 
@@ -39,7 +40,7 @@ namespace MachinationsUP.Integration.GameObject
         /// <summary>
         /// Event triggered when MachinationsGameLayer initialization is completed.
         /// </summary>
-        public event EventHandler OnMGLReceivedData;
+        public event EventHandler OnBindersUpdated;
 
         /// <summary>
         /// Dictionary of Game Object Property Name and <see cref="MachinationsUP.Integration.Binder.ElementBinder"/>.
@@ -66,7 +67,7 @@ namespace MachinationsUP.Integration.GameObject
                 CreateBinder(diagramMapping);
             //Assign event if any.
             if (onMGLReceivedData != null)
-                OnMGLReceivedData = onMGLReceivedData;
+                OnBindersUpdated = onMGLReceivedData;
             MachinationsGameLayer.EnrollGameObject(this);
         }
 
@@ -98,28 +99,30 @@ namespace MachinationsUP.Integration.GameObject
             foreach (string gameObjectPropertyName in _binders.Keys)
                 _binders[gameObjectPropertyName].GetElementBaseFromMGL(null, isRunningOffline, isRunningOffline);
 
-            //Notify any listeners of base.OnMGLReceivedData.
-            NotifyMGLReceivedData();
+            //Notify any listeners of base.OnBindersUpdated.
+            NotifyBindersUpdated();
         }
 
         /// <summary>
-        ///
+        /// Called by <see cref="MachinationsGameLayer"/> when a Binder has to be updated.
+        /// This happens usually when the back-end sends a new value.
         /// </summary>
-        /// <param name="diagramMapping"></param>
-        virtual internal void MGLUpdateBinder (DiagramMapping diagramMapping)
+        /// <param name="diagramMapping">Diagram Mapping to update.</param>
+        virtual internal void UpdateBinder (DiagramMapping diagramMapping, ElementBase elementBase)
         {
+            //TODO: on update, shouldn't create new elements, but rather UPDATE the current element.
             //Ask the necessary Binder to go get its ElementBase.
             _binders[diagramMapping.GameObjectPropertyName].GetElementBaseFromMGL(null, true);
-            //Notify any listeners of base.OnMGLReceivedData.
-            NotifyMGLReceivedData();
+            //Notify any listeners of base.OnBindersUpdated.
+            NotifyBindersUpdated();
         }
 
         /// <summary>
         /// Notifies any listeners that the MGL Init Request has completed.
         /// </summary>
-        protected void NotifyMGLReceivedData ()
+        protected void NotifyBindersUpdated ()
         {
-            OnMGLReceivedData?.Invoke(this, EventArgs.Empty);
+            OnBindersUpdated?.Invoke(this, EventArgs.Empty);
         }
 
         virtual protected string DebugContext ()

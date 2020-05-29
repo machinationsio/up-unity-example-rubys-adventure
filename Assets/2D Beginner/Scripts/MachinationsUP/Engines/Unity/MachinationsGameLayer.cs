@@ -460,13 +460,13 @@ namespace MachinationsUP.Engines.Unity
                     if (!_cache.DiagramMappings.Contains(diagramMapping)) _cache.DiagramMappings.Add(diagramMapping);
                 }
 
-                //When changes occur in the Diagram, the Machinations Back-end will notify UP.
+                //When changes occur in the Diagram, the Machinations back-end will notify UP.
                 if (updateFromDiagram)
                     //In turn, UP will notify all registered Machinations Game Objects.
                     foreach (MachinationsGameObject mgo in _gameObjects)
                         //When we find a registered Game Object that matches this Diagram Mapping asking it to update its Binder.
                         if (mgo.GameObjectName == diagramMapping.GameObjectName)
-                            mgo.MGLUpdateBinder(diagramMapping);
+                            mgo.UpdateBinder(diagramMapping, elementBase);
 
                 Debug.Log("ElementBase created for '" + diagramMapping + "' with Base Value of: " +
                           elementBase.BaseValue);

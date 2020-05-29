@@ -3,9 +3,9 @@
   <DiagramMappings>
     <MachinationsDiagramMapping>
       <CachedElementBase>
-        <BaseValue>33</BaseValue>
-        <CurrentValue>33</CurrentValue>
-        <MaxValue>50</MaxValue>
+        <BaseValue>2</BaseValue>
+        <CurrentValue>2</CurrentValue>
+        <MaxValue>-1</MaxValue>
         <MinValue>0</MinValue>
       </CachedElementBase>
       <DiagramElementID>19</DiagramElementID>
@@ -34,8 +34,8 @@
     </MachinationsDiagramMapping>
     <MachinationsDiagramMapping>
       <CachedElementBase>
-        <BaseValue>291</BaseValue>
-        <CurrentValue>291</CurrentValue>
+        <BaseValue>294</BaseValue>
+        <CurrentValue>294</CurrentValue>
         <MaxValue>-1</MaxValue>
         <MinValue>0</MinValue>
       </CachedElementBase>
@@ -48,8 +48,8 @@
     <MachinationsDiagramMapping>
       <CachedElementBase
         i:type="MachinationsFormula">
-        <BaseValue>31</BaseValue>
-        <CurrentValue>31</CurrentValue>
+        <BaseValue>38</BaseValue>
+        <CurrentValue>38</CurrentValue>
         <MaxValue>-1</MaxValue>
         <MinValue>0</MinValue>
         <FormulaString>20+D24</FormulaString>

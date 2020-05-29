@@ -3,6 +3,7 @@ using MachinationsUP.GameEngineAPI.Game;
 using MachinationsUP.GameEngineAPI.GameObject;
 using MachinationsUP.GameEngineAPI.States;
 using MachinationsUP.Integration.Binder;
+using MachinationsUP.Integration.Elements;
 using MachinationsUP.Integration.Inventory;
 using MachinationsUP.SyncAPI;
 using UnityEngine;
@@ -52,8 +53,8 @@ namespace MachinationsUP.Integration.GameObject
             //Since this is a Game Aware Object, update its Game State.
             OnGameStateChanged(MachinationsGameLayer.GetGameState());
 
-            //Notify any listeners of base.OnMGLReceivedData.
-            NotifyMGLReceivedData();
+            //Notify any listeners of base.OnBindersUpdated.
+            NotifyBindersUpdated();
         }
 
         /// <summary>
@@ -61,12 +62,13 @@ namespace MachinationsUP.Integration.GameObject
         /// from the Machinations Back-end.
         /// </summary>
         /// <param name="diagramMapping"></param>
-        override internal void MGLUpdateBinder (DiagramMapping diagramMapping)
+        override internal void UpdateBinder (DiagramMapping diagramMapping, ElementBase elementBase)
         {
+            //TODO: on update, shouldn't create new elements, but rather UPDATE the current element.
             //Ask the Binder to update exactly this desired StatesAssociation.
             _binders[diagramMapping.GameObjectPropertyName].GetElementBaseFromMGL(diagramMapping.StatesAssoc, true);
-            //Notify any listeners of base.OnMGLReceivedData.
-            NotifyMGLReceivedData();
+            //Notify any listeners of base.OnBindersUpdated.
+            NotifyBindersUpdated();
         }
 
         #region Implementation of IGameLifecycleSubscriber
