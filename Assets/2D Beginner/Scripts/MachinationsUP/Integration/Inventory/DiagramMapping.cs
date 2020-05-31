@@ -30,6 +30,11 @@ namespace MachinationsUP.Integration.Inventory
         }
 
         private string _gameObjectPropertyName;
+        
+        /// <summary>
+        /// The <see cref="ElementBinder"/> manifesting this Diagram Mapping in the game.
+        /// </summary>
+        public ElementBinder Binder { get; set; }
 
         /// <summary>
         /// The name of this Property.
@@ -108,7 +113,7 @@ namespace MachinationsUP.Integration.Inventory
         /// <param name="stringifyStatesAssociation">In the case of cached States Association, string values will be used for comparison.</param>
         public bool Matches (ElementBinder elementBinder, StatesAssociation statesAssociation, bool stringifyStatesAssociation)
         {
-            return Matches(elementBinder.ParentGameObject.GameObjectName, elementBinder.GameObjectPropertyName, statesAssociation,
+            return Matches(elementBinder.ParentGameObject?.GameObjectName, elementBinder.GameObjectPropertyName, statesAssociation,
                 stringifyStatesAssociation);
         }
 

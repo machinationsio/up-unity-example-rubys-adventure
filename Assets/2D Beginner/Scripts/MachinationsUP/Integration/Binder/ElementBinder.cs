@@ -29,7 +29,7 @@ namespace MachinationsUP.Integration.Binder
         /// the Game Object Property Name it represents) to the Machinations Diagram.
         /// <see cref="MachinationsUP.Integration.GameObject.MachinationsGameObject"/>
         /// </summary>
-        readonly private DiagramMapping _diagramMapping;
+        public DiagramMapping DiagMapping { get; }
 
         /// <summary>
         /// Current state of the Game. Updated via <see cref="UpdateGameState"/>
@@ -67,7 +67,7 @@ namespace MachinationsUP.Integration.Binder
         /// <summary>
         /// Returns the Game Object Property Name that this Binder is for.
         /// </summary>
-        public string GameObjectPropertyName => _diagramMapping.GameObjectPropertyName;
+        public string GameObjectPropertyName => DiagMapping.GameObjectPropertyName;
 
         /// <summary>
         /// <see cref="MachinationsUP.GameEngineAPI.States.StatesAssociation"/> to use for when there is no States Association selected.
@@ -83,7 +83,7 @@ namespace MachinationsUP.Integration.Binder
         public ElementBinder (MachinationsGameObject parentGameObject, DiagramMapping diagramMapping)
         {
             ParentGameObject = parentGameObject;
-            _diagramMapping = diagramMapping;
+            DiagMapping = diagramMapping;
         }
 
         /// <summary>
@@ -97,10 +97,12 @@ namespace MachinationsUP.Integration.Binder
             {
                 return _currentElement;
             }
+
             //No Element exists? Clone one from the Diagram Base (if available),
-            if (_diagramMapping.DefaultElementBase != null)
+            if (DiagMapping.DefaultElementBase != null)
             {
-                _currentElement = _diagramMapping.DefaultElementBase.Clone();
+                Debug.Log("ElementBinder returning DefaultElementBase for " + GetFullName());
+                _currentElement = DiagMapping.DefaultElementBase.Clone();
                 return _currentElement;
             }
 
@@ -171,10 +173,11 @@ namespace MachinationsUP.Integration.Binder
         /// in the <see cref="MachinationsUP.Engines.Unity.MachinationsGameLayer"/> Init Request.</param>
         /// <param name="overwrite">TRUE: overwrite the value if it's already in the <see cref="_elements"/> Dictionary.</param>
         /// <param name="isRunningOffline">TRUE: the <see cref="MachinationsUP.Engines.Unity.MachinationsGameLayer"/> is running in offline mode.</param>
-        public void GetElementBaseFromMGL (StatesAssociation statesAssociation = null, bool overwrite = false, bool isRunningOffline = false)
+        public void CreateElementBaseForStateAssoc (StatesAssociation statesAssociation = null, bool overwrite = false,
+            bool isRunningOffline = false)
         {
-            Debug.Log("GetElementBaseFromMGL in ElementBinder '" + GetFullName() + "' @ statesAssociation: " +
-                      (statesAssociation != null ? statesAssociation.Title : "N/A"));
+            Debug.Log("CreateElementBaseForStateAssoc in ElementBinder [Hash: " + GetHashCode() + "] '" +
+                      GetFullName() + "' @ statesAssociation: " + (statesAssociation != null ? statesAssociation.Title : "N/A"));
             //The MachinationsGameLayer is responsible for creating ElementBase.
             ElementBase newElement = MachinationsGameLayer.Instance.CreateElement(this, statesAssociation);
             //If no element was found & running offline, just letting it slide.
@@ -191,7 +194,8 @@ namespace MachinationsUP.Integration.Binder
                 SelectCurrentElement();
             }
             else
-                throw new Exception("GetElementBaseFromMGL.GetElementBaseFromMGL: Element collision for Binder: " + GetFullName());
+                throw new Exception("CreateElementBaseForStateAssoc.CreateElementBaseForStateAssoc: Element collision for Binder: " +
+                                    GetFullName());
 
             //MachinationsObjects (non-GameAware) will not use StatesAssociation and will only have a single Holder per Binder.
             if (statesAssociation == null)
@@ -222,7 +226,7 @@ namespace MachinationsUP.Integration.Binder
         /// <returns></returns>
         private string GetFullName ()
         {
-            return ParentGameObject.GameObjectName + "." + _diagramMapping.GameObjectPropertyName;
+            return (ParentGameObject != null ? ParentGameObject.GameObjectName : "!NoParent!") + "." + DiagMapping.GameObjectPropertyName;
         }
 
         /// <summary>

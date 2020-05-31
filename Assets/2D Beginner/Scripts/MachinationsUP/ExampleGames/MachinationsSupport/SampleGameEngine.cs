@@ -1,4 +1,5 @@
 ﻿using MachinationsUP.GameEngineAPI.Game;
+using UnityEngine;
 
 namespace MachinationsUP.ExampleGames.MachinationsSupport
 {
@@ -13,6 +14,18 @@ namespace MachinationsUP.ExampleGames.MachinationsSupport
         public GameStates GetGameState ()
         {
             return GameStates.Exploring;
+        }
+
+        public void MachinationsInitStart ()
+        {
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+        }
+
+        public void MachinationsInitComplete ()
+        {
+            Time.timeScale = 1;
+            AudioListener.pause = true;
         }
 
         #endregion

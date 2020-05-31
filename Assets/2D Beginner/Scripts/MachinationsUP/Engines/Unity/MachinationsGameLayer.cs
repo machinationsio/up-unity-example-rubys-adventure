@@ -112,6 +112,11 @@ namespace MachinationsUP.Engines.Unity
         static readonly private List<MachinationsGameAwareObject> _gameAwareObjects = new List<MachinationsGameAwareObject>();
 
         /// <summary>
+        /// List with Scriptable Objects.
+        /// </summary>
+        static readonly private List<IMachinationsScriptableObject> _scriptableObjects = new List<IMachinationsScriptableObject>();
+
+        /// <summary>
         /// Socket.io used for communication with Machinations NodeJS backend.
         /// </summary>
         private SocketIOComponent _socket;
@@ -212,8 +217,9 @@ namespace MachinationsUP.Engines.Unity
             get
             {
                 if (_instance != null) return _instance;
-                Debug.Log("MGL Created by invocation.");
-                return _instance = new GameObject("MachinationsGameLayer").AddComponent<MachinationsGameLayer>();
+                _instance = new GameObject("MachinationsGameLayer").AddComponent<MachinationsGameLayer>();
+                Debug.Log("MGL created by invocation. Hash is " + _instance.GetHashCode() + " and User Key is " + _instance.userKey);
+                return _instance;
             }
         }
 
@@ -233,7 +239,7 @@ namespace MachinationsUP.Engines.Unity
             {
                 //If the MGL is added to the Scene as a prefab (as it should), then this function
                 //will likely execute before Instance is ever accessed. Making sure that the instance is set.
-                Debug.Log("MGL created by Unity Engine.");
+                Debug.Log("MGL created by Unity Engine. Hash is " + GetHashCode() + " and User Key is " + userKey);
                 _instance = this;
             }
 
@@ -251,15 +257,13 @@ namespace MachinationsUP.Engines.Unity
             foreach (MachinationsGameObject mgo in _gameObjects)
                 AddTargets(mgo.Manifest.GetMachinationsDiagramTargets());
 
-            //Pause game.
-            Time.timeScale = 0;
-            AudioListener.pause = true;
+            //Notify Game Engine of Machinations Init Start.
+            Instance._gameLifecycleProvider.MachinationsInitStart();
 
-            //Init socket.
-            InitSocket();
-            Debug.Log("MGL.Start: Initiating connection to Machinations Backend.");
+            //Attempt to init Socket.
+            _connectionAborted = InitSocket() == false;
 
-            yield return new WaitUntil(() => _socket.IsConnected || _connectionAborted);
+            yield return new WaitUntil(() => _connectionAborted || _socket.IsConnected);
 
             if (_connectionAborted)
             {
@@ -290,9 +294,8 @@ namespace MachinationsUP.Engines.Unity
                 Debug.Log("MGL.Start: Machinations Backend Sync complete. Resuming game.");
             }
 
-            //Un-Pause game.
-            Time.timeScale = 1;
-            AudioListener.pause = true;
+            //Notify Game Engine of Machinations Init Complete.
+            Instance._gameLifecycleProvider.MachinationsInitComplete();
         }
 
         #endregion
@@ -302,10 +305,13 @@ namespace MachinationsUP.Engines.Unity
         /// <summary>
         /// Initializes the Socket IO component.
         /// </summary>
-        private void InitSocket ()
+        private bool InitSocket ()
         {
             //Initialize socket.
             GameObject go = GameObject.Find("SocketIO");
+            //No Socket found.
+            if (go == null) return false;
+            Debug.Log("MGL.Start: Initiating connection to Machinations Backend.");
             //TODO: during development, fail fast on Socket error. Remove @ release.
             SocketIOComponent.MaxRetryCountForConnect = 1;
             _socket = go.GetComponent<SocketIOComponent>();
@@ -319,6 +325,7 @@ namespace MachinationsUP.Engines.Unity
             _socket.On("error", OnSocketError);
             _socket.On("close", OnSocketClose);
             _socket.Connect();
+            return true;
         }
 
         /// <summary>
@@ -328,22 +335,61 @@ namespace MachinationsUP.Engines.Unity
         /// <param name="isRunningOffline">TRUE: the MGL is running in offline mode.</param>
         static private void NotifyAboutMGLInitComplete (bool isRunningOffline = false)
         {
-            //_gameObjects is converted into an Array because the collection MAY be modified inside Game Objects,
-            //which may create other Game Objects which will register to MGL.
-            List<MachinationsGameObject> gameObjects = new List<MachinationsGameObject>(_gameObjects.ToArray());
-            //Notify everybody.
-            foreach (MachinationsGameObject mgo in gameObjects)
-                mgo.MGLInitComplete(isRunningOffline);
-            //New Game Objects created & enrolled? Propagate notification everywhere.
-            while (gameObjects.Count != _gameObjects.Count)
+            Debug.Log("MGL NotifyAboutMGLInitComplete.");
+            //Notify Scriptable Objects.
+            foreach (IMachinationsScriptableObject so in _scriptableObjects)
+                so.MGLInitCompleteSO();
+
+            //_gameObjects is cloned as a new Array because the collection MAY be modified during MachinationsGameObject.MGLInitComplete.
+            //That's because Game Objects MAY create other Game Objects during MachinationsGameObject.MGLInitComplete.
+            //These new Game Objects will then enroll with the MGL, which will add them to _gameObjects.
+            List<MachinationsGameObject> gameObjectsToNotify = new List<MachinationsGameObject>(_gameObjects.ToArray());
+            //Maintain a list of Game Objects that were notified.
+            List<MachinationsGameObject> gameObjectsNotified = new List<MachinationsGameObject>();
+            //Maintain a list of all Game Objects that were created during the notification loop.
+            List<MachinationsGameObject> gameObjectsCreatedDuringNotificationLoop = new List<MachinationsGameObject>();
+
+            do
             {
+                Debug.Log("MGL NotifyAboutMGLInitComplete gameObjectsToNotify: " + gameObjectsToNotify.Count);
+
+                //Notify Machinations Game Objects.
+                foreach (MachinationsGameObject mgo in gameObjectsToNotify)
+                {
+                    //Debug.Log("MGL NotifyAboutMGLInitComplete: Notifying: " + mgo);
+
+                    //This may create new Machinations Game Objects due to them subscribing to MachinationsGameObject.OnBindersUpdated which
+                    //is called on MGLInitComplete. Game Objects may create other Game Objects at that point.
+                    //For an example: See Unity Example Ruby's Adventure @ EnemySpawner.OnBindersUpdated [rev f99963842e9666db3e697da5446e47cb5f1c4225]
+                    mgo.MGLInitComplete(isRunningOffline);
+                    gameObjectsNotified.Add(mgo);
+                }
+
+                //Debug.Log("MGL NotifyAboutMGLInitComplete gameObjectsNotified: " + gameObjectsNotified.Count);
+
+                //Clearing our task list of objects to notify.
+                gameObjectsToNotify.Clear();
+
+                //Check if any new Game Objects were created & enrolled during the above notification loop.
                 foreach (MachinationsGameObject mgo in _gameObjects)
-                    if (!gameObjects.Contains(mgo))
+                    if (!gameObjectsNotified.Contains(mgo))
                     {
-                        gameObjects.Add(mgo);
-                        mgo.MGLInitComplete(isRunningOffline);
+                        //DEBT: [working on MGO lifecycle] we've commented out adding new Game Objects to gameObjectsToNotify because
+                        //we want to only trigger MGLInitComplete on items that were already created. If they create other items,
+                        //they will instead receive MGLReady upon Enrolling.
+                        //gameObjectsToNotify.Add(mgo);
+
+                        //Keep track of how many new objects we created during the notification loop(s).
+                        gameObjectsCreatedDuringNotificationLoop.Add(mgo);
                     }
+
+                //Debug.Log("MGL NotifyAboutMGLInitComplete NEW gameObjectsToNotify: " + gameObjectsToNotify.Count);
             }
+            //New objects were created.
+            while (gameObjectsToNotify.Count > 0);
+
+            Debug.Log("MGL NotifyAboutMGLInitComplete gameObjectsCreatedDuringNotificationLoop: " +
+                      gameObjectsCreatedDuringNotificationLoop.Count);
         }
 
         /// <summary>
@@ -352,7 +398,7 @@ namespace MachinationsUP.Engines.Unity
         /// game startup.
         /// </summary>
         /// <param name="targets"></param>
-        private void AddTargets (Dictionary<DiagramMapping, ElementBase> targets)
+        static private void AddTargets (Dictionary<DiagramMapping, ElementBase> targets)
         {
             foreach (DiagramMapping diagramMapping in targets.Keys)
             {
@@ -370,7 +416,8 @@ namespace MachinationsUP.Engines.Unity
         /// <returns></returns>
         virtual protected string GetMachinationsUniqueID (ElementBinder binder, StatesAssociation statesAssociation)
         {
-            return binder.ParentGameObject.GameObjectName + "." + binder.GameObjectPropertyName + "." +
+            return (binder.ParentGameObject != null ? binder.ParentGameObject.GameObjectName : "!NoParent!") + "." +
+                   binder.GameObjectPropertyName + "." +
                    (statesAssociation != null ? statesAssociation.Title : "N/A");
         }
 
@@ -442,6 +489,8 @@ namespace MachinationsUP.Engines.Unity
 
                 //Get the Element Base based on the dictionary of Element Properties.
                 ElementBase elementBase = CreateElementFromProps(elementProperties);
+                Debug.Log("ElementBase created for '" + diagramMapping + "' with Base Value of: " +
+                          elementBase.BaseValue);
 
                 //Element already exists but not in Update mode?
                 if (_sourceElements[diagramMapping] != null && !updateFromDiagram)
@@ -461,21 +510,30 @@ namespace MachinationsUP.Engines.Unity
                 }
 
                 //When changes occur in the Diagram, the Machinations back-end will notify UP.
-                if (updateFromDiagram)
-                    //In turn, UP will notify all registered Machinations Game Objects.
-                    foreach (MachinationsGameObject mgo in _gameObjects)
-                        //When we find a registered Game Object that matches this Diagram Mapping asking it to update its Binder.
-                        if (mgo.GameObjectName == diagramMapping.GameObjectName)
-                            mgo.UpdateBinder(diagramMapping, elementBase);
-
-                Debug.Log("ElementBase created for '" + diagramMapping + "' with Base Value of: " +
-                          elementBase.BaseValue);
+                if (updateFromDiagram) NotifyAboutMGLUpdate(diagramMapping, elementBase);
             }
 
             //Send Update notification to all listeners.
             OnMachinationsUpdate?.Invoke(this, null);
             //Caching active? Save the cache now.
             if (!string.IsNullOrEmpty(cacheDirectoryName)) SaveCache();
+        }
+
+        private void NotifyAboutMGLUpdate (DiagramMapping diagramMapping, ElementBase elementBase)
+        {
+            //Notify Scriptable Objects.
+            foreach (IMachinationsScriptableObject so in _scriptableObjects)
+            {
+                //TODO: must update instead of create here.
+                diagramMapping.Binder.CreateElementBaseForStateAssoc(diagramMapping.StatesAssoc, true);
+                so.MGLUpdateSO(diagramMapping, elementBase);
+            }
+
+            //Notify all registered Machinations Game Objects.
+            foreach (MachinationsGameObject mgo in _gameObjects)
+                //When we find a registered Game Object that matches this Diagram Mapping asking it to update its Binder.
+                if (mgo.GameObjectName == diagramMapping.GameObjectName)
+                    mgo.UpdateBinder(diagramMapping, elementBase);
         }
 
         /// <summary>
@@ -660,7 +718,7 @@ namespace MachinationsUP.Engines.Unity
         /// <param name="e">Contains Init Data.</param>
         private void OnGameInitResponse (SocketIOEvent e)
         {
-            Debug.Log("Received OnGameInitResponse DATA: " + e.data);
+            Debug.Log("MGL [Hash:" + Instance.GetHashCode() + "] Received OnGameInitResponse DATA: " + e.data);
 
             //The answer from the back-end may contain multiple payloads.
             foreach (string payloadKey in e.data.keys)
@@ -724,14 +782,54 @@ namespace MachinationsUP.Engines.Unity
         #region Public Methods
 
         /// <summary>
-        /// Declares a Manifest before a Game Object instantiation can add it to the MachinationsGameLayer.
-        /// This is used to make sure that all Game Objects are ready for use after MachinationsGameLayer Initialization.
+        /// Creates <see cref="ElementBinder"/> for each Game Object Property provided in the <see cref="MachinationsGameObjectManifest"/>.
         /// </summary>
-        /// <param name="manifest"></param>
+        static public Dictionary<string, ElementBinder> CreateBindersForManifest (MachinationsGameObjectManifest manifest)
+        {
+            var ret = new Dictionary<string, ElementBinder>();
+            foreach (DiagramMapping dm in manifest.PropertiesToSync)
+            {
+                ElementBinder eb = new ElementBinder(null, dm); //The Binder will NOT have any Parent Game Object.
+                //Ask the Binder to create Elements for all possible States Associations.
+                var statesAssociations = manifest.GetStatesAssociationsForPropertyName(dm.GameObjectPropertyName);
+                //If no States Associations were defined.
+                if (statesAssociations.Count == 0)
+                    eb.CreateElementBaseForStateAssoc();
+                else
+                    foreach (StatesAssociation statesAssociation in statesAssociations)
+                        eb.CreateElementBaseForStateAssoc(statesAssociation);
+                //Save the Binder for later use.
+                dm.Binder = eb;
+                //Store the new Binder in the Dictionary to return.
+                ret[dm.GameObjectPropertyName] = eb;
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// Registers a <see cref="MachinationsGameObjectManifest"/> to make sure that during Initialization, the MGL
+        /// (aka <see cref="MachinationsGameLayer"/> retrieves all the Manifest's necessary data so that
+        /// any Game Objects that use this Manifest can query the MGL for the needed values.
+        /// </summary>
         static public void DeclareManifest (MachinationsGameObjectManifest manifest)
         {
-            Debug.Log("MGL.DeclareManifest: " + manifest);
-            Instance.AddTargets(manifest.GetMachinationsDiagramTargets());
+            Debug.Log("MGL DeclareManifest: " + manifest);
+            //Add all of this Manifest's targets to the list that we will have to Initialize & monitor.
+            AddTargets(manifest.GetMachinationsDiagramTargets());
+        }
+
+        /// <summary>
+        /// Registers a <see cref="IMachinationsScriptableObject"/> along with its Manifest.
+        /// This is used to make sure that all Game Objects are ready for use after MGL Initialization.
+        /// </summary>
+        /// <param name="imso">The IMachinationsScriptableObject to add.</param>
+        /// <param name="manifest">Its <see cref="MachinationsGameObjectManifest"/>.</param>
+        static public void EnrollScriptableObject (IMachinationsScriptableObject imso, MachinationsGameObjectManifest manifest)
+        {
+            Debug.Log("MGL EnrollScriptableObject: " + manifest);
+            DeclareManifest(manifest);
+            if (!_scriptableObjects.Contains(imso)) _scriptableObjects.Add(imso);
         }
 
         /// <summary>
@@ -746,7 +844,7 @@ namespace MachinationsUP.Engines.Unity
             //If the MGL was already initialized OR is running in offline mode,
             //notifying this object that it can retrieve whatever information it needs from MGL.
             if (IsInitialized || IsInOfflineMode)
-                machinationsGameObject.MGLInitComplete();
+                machinationsGameObject.MGLReady();
         }
 
         /// <summary>
@@ -791,7 +889,10 @@ namespace MachinationsUP.Engines.Unity
                 return _sourceElements[diagramMapping];
             //When Offline, we may return the Default Element Base.
             if (IsInOfflineMode && diagramMapping.DefaultElementBase != null)
+            {
+                Debug.Log("MGL Returning DefaultElementBase for " + diagramMapping);
                 return diagramMapping.DefaultElementBase;
+            }
 
             throw new Exception("MGL.GetSourceElementBase: cannot find any Source Element Base for " + diagramMapping);
         }
@@ -810,17 +911,16 @@ namespace MachinationsUP.Engines.Unity
         /// <summary>
         /// TRUE when all Init-related tasks have been completed.
         /// </summary>
-        static private bool IsInitialized
+        static public bool IsInitialized
         {
             set
             {
+                isInitialized = value;
                 if (value)
                 {
                     Debug.Log("MachinationsGameLayer Initialization Complete!");
                     NotifyAboutMGLInitComplete();
                 }
-
-                isInitialized = value;
             }
             get => isInitialized;
         }

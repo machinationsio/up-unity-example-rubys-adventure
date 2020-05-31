@@ -76,14 +76,17 @@ public class EnemySpawner : MonoBehaviour
     {
         Instance = this;
         //Initialize MachinationsGameObject.
-        _mgo = new MachinationsGameObject(_manifest, OnMGLReceivedData);
+        _mgo = new MachinationsGameObject(_manifest, OnBindersUpdated);
         //Initialize spawn locations. HARDCODED.
         _positions.Add(new Point(-1.491717, -2.536745));
         _positions.Add(new Point(4.97679, -4.343874));
         _positions.Add(new Point(-3.805256, 2.498485));
     }
 
-    private void OnMGLReceivedData (object sender, EventArgs e)
+    /// <summary>
+    /// The MGL will notify this class when Binders concerning it are updated.
+    /// </summary>
+    private void OnBindersUpdated (object sender, EventArgs e)
     {
         SpawnEnemies();
     }

@@ -7,6 +7,7 @@ using MachinationsUP.Integration.Binder;
 using MachinationsUP.Integration.Elements;
 using MachinationsUP.Integration.Inventory;
 using MachinationsUP.SyncAPI;
+using UnityEngine;
 
 namespace MachinationsUP.Integration.GameObject
 {
@@ -57,17 +58,20 @@ namespace MachinationsUP.Integration.GameObject
         /// Default constructor.
         /// </summary>
         /// <param name="manifest">The Manifest that will be used to initialized this MachinationsGameObject.</param>
-        /// <param name="onMGLReceivedData">Event to invoke when MGL Received data. IMPORTANT: this may be executed
-        /// upon Construction of this Class as a side-effect of <see cref="MachinationsUP.Engines.Unity.MachinationsGameLayer.EnrollGameObject"/></param>
-        public MachinationsGameObject (MachinationsGameObjectManifest manifest, EventHandler onMGLReceivedData = null)
+        /// <param name="onBindersUpdated">When a <see cref="MachinationsGameObject"/> enrolls itself
+        /// using <see cref="MachinationsGameLayer.EnrollGameObject"/>, this event WILL fire if the MachinationsGameLayer
+        /// has been initialized. So, this is why it is allowed to send an EventHandler callback upon Construction.
+        /// </param>
+        public MachinationsGameObject (MachinationsGameObjectManifest manifest, EventHandler onBindersUpdated = null)
         {
             _gameObjectName = manifest.GameObjectName;
             _manifest = manifest;
             foreach (DiagramMapping diagramMapping in _manifest.PropertiesToSync)
                 CreateBinder(diagramMapping);
-            //Assign event if any.
-            if (onMGLReceivedData != null)
-                OnBindersUpdated = onMGLReceivedData;
+            //Assign event, if any was provided. This has to be done before EnrollGameObject, because that function
+            //may call MGLInitComplete, which may in turn call OnBindersUpdated.
+            if (onBindersUpdated != null)
+                OnBindersUpdated = onBindersUpdated;
             MachinationsGameLayer.EnrollGameObject(this);
         }
 
@@ -95,24 +99,35 @@ namespace MachinationsUP.Integration.GameObject
         /// </summary>
         virtual internal void MGLInitComplete (bool isRunningOffline = false)
         {
+            Debug.Log("MGLInitComplete in " + this);
             //Go through all Binders and ask them to retrieve their ElementBase.
             foreach (string gameObjectPropertyName in _binders.Keys)
-                _binders[gameObjectPropertyName].GetElementBaseFromMGL(null, isRunningOffline, isRunningOffline);
+                _binders[gameObjectPropertyName].CreateElementBaseForStateAssoc(null, isRunningOffline, isRunningOffline);
 
             //Notify any listeners of base.OnBindersUpdated.
             NotifyBindersUpdated();
         }
+        
+        /// <summary>
+        /// Called by <see cref="MachinationsUP.Engines.Unity.MachinationsGameLayer"/> if it's ready for work.
+        /// Usually called just after a MachinationsGameObject Enrolls, if the MGL is initialized.
+        /// </summary>
+        public void MGLReady ()
+        {
+            MGLInitComplete();
+        }
 
         /// <summary>
-        /// Called by <see cref="MachinationsGameLayer"/> when a Binder has to be updated.
-        /// This happens usually when the back-end sends a new value.
+        /// Asks this Game-Aware Object to update one of its <see cref="MachinationsUP.Integration.Binder.ElementBinder"/> usually because
+        /// new values arrived from the Machinations Back-end.
         /// </summary>
-        /// <param name="diagramMapping">Diagram Mapping to update.</param>
+        /// <param name="diagramMapping">The <see cref="DiagramMapping"/> associated with this Binder.</param>
+        /// <param name="elementBase">The <see cref="ElementBase"/> obtained by parsing the back-end update.</param>
         virtual internal void UpdateBinder (DiagramMapping diagramMapping, ElementBase elementBase)
         {
             //TODO: on update, shouldn't create new elements, but rather UPDATE the current element.
             //Ask the necessary Binder to go get its ElementBase.
-            _binders[diagramMapping.GameObjectPropertyName].GetElementBaseFromMGL(null, true);
+            _binders[diagramMapping.GameObjectPropertyName].CreateElementBaseForStateAssoc(null, true);
             //Notify any listeners of base.OnBindersUpdated.
             NotifyBindersUpdated();
         }
@@ -128,6 +143,11 @@ namespace MachinationsUP.Integration.GameObject
         virtual protected string DebugContext ()
         {
             return "MachinationsGameObject '" + _gameObjectName + "'";
+        }
+
+        override public string ToString ()
+        {
+            return DebugContext();
         }
 
     }

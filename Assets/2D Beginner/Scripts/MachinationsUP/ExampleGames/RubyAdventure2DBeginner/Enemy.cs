@@ -73,10 +73,11 @@ namespace MachinationsUP.ExampleGames.RubyAdventure2DBeginner
         {
             enemyGUID = Guid.NewGuid();
             theRealBar = Instantiate(healthBarPrefab);
+            //TODO: it's a hack to store a Canvas for Enemy UI inside EnemySpawner.
             theRealBar.Init(transform.position, EnemySpawner.GetEnemyUICanvas());
 
             //Initialize MachinationsGameObject.
-            _mgo = new MachinationsGameObject(_manifest, OnMGLReceivedData);
+            _mgo = new MachinationsGameObject(_manifest, OnBindersUpdated);
         }
 
         public void Start ()
@@ -94,7 +95,7 @@ namespace MachinationsUP.ExampleGames.RubyAdventure2DBeginner
             UIConsole.Instance.AddTrackedItem(_manifest.GetDiagramMapping(M_HEALTH));
         }
 
-        private void OnMGLReceivedData (object sender, EventArgs e)
+        private void OnBindersUpdated (object sender, EventArgs e)
         {
             MachinationsGameObject mgo = (MachinationsGameObject) sender;
             //Debug.Log("Enemy Health set to " + mgo[M_HEALTH].BaseValue);
