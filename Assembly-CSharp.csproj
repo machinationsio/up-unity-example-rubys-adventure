@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\2D Beginner\Scripts\MachinationsUP\Engines\Unity\EnrolledScriptableObject.cs" />
      <Compile Include="Assets\2D Beginner\Scripts\MachinationsUP\Engines\Unity\IMachinationsScriptableObject.cs" />
      <Compile Include="Assets\2D Beginner\Scripts\MachinationsUP\Engines\Unity\MachinationsGameLayer.cs" />
      <Compile Include="Assets\2D Beginner\Scripts\MachinationsUP\ExampleGames\MachinationsSupport\Events\RubyAdventureGameEvents.cs" />
