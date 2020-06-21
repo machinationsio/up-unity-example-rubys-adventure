@@ -18,6 +18,15 @@ This repository integrates Machinations UP within Ruby's Adventure, a simple gam
 5. Run the game in Unity by pressing the "Play" arrow in the center-top, above the stage.
 6. Change the `Player HP` Pool in the Ruby's Adventure diagram. If everything works, Ruby's in-game health should also change.
 
+# Points of Interest (within the example's code)
+
+Classes inside the game use **UP** to get their values from the Machinations diagram, via the `MachinationsGameLayer`. Here are some files where you can see how it all works.
+
+- The `Player HP` Pool and the `Speed` Pool in Ruby's Adventure diagram are mapped inside `RubyController.cs`. See the `MachinationsGameObjectManifest` there.
+- Also see the `MachinationsGameObjectManifest` in `Enemy.cs` and `Projectile.cs`.
+- Damage for Projectiles is calculated using Formula Elements, see `FormulaElement.cs`. Formulas are parsed inside `MachinationsFormula.cs`. This is a very early implementation of a more complex formula-handling system.
+- `EnemySpawner.cs` is where extra enemies are added based on a value retrieved from Machinations.
+
 # Useful Links
 
 Head over to our [Developer Portal](https://developer.machinations.io) for more Machinations tinkering adventures.
