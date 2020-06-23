@@ -3162,7 +3162,7 @@ PrefabInstance:
     - target: {fileID: 7471410119811048300, guid: 71879bd392bfc0b4dbc3a986ee2b6a0d,
         type: 3}
       propertyPath: diagramToken
-      value: d5cbca24-1f45-4b35-84eb-243508753e05
+      value: 456884c2-de9d-4a13-92cf-0d594a6d32ec
       objectReference: {fileID: 0}
     - target: {fileID: 7471410119811048300, guid: 71879bd392bfc0b4dbc3a986ee2b6a0d,
         type: 3}
@@ -3172,7 +3172,7 @@ PrefabInstance:
     - target: {fileID: 7471410119811048300, guid: 71879bd392bfc0b4dbc3a986ee2b6a0d,
         type: 3}
       propertyPath: userKey
-      value: 79b41682-e251-450c-8f5d-a098edc50374
+      value: 4fc8b3a7-3909-43b6-96a0-0387cd85e896
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71879bd392bfc0b4dbc3a986ee2b6a0d, type: 3}
@@ -6373,7 +6373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8, type: 3}
       propertyPath: url
-      value: wss://machinations.axten.ro:6274/socket.io/?EIO=4&transport=websocket
+      value: wss://api.machinations.io/socket.io/?EIO=4&transport=websocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8, type: 3}
+      propertyPath: autoConnect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8, type: 3}
