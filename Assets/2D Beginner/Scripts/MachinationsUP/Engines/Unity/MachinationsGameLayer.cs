@@ -269,7 +269,7 @@ namespace MachinationsUP.Engines.Unity
 
             yield return new WaitUntil(() => _connectionAborted || (_socket.IsConnected && SocketOpenReceived && SocketOpenStartReceived));
 
-            if (_connectionAborted || (_socket.IsConnected && SocketOpenReceived && SocketOpenStartReceived))
+            if (_connectionAborted)
             {
                 Debug.LogError("MGL Connection failure. Game will proceed with default/cached values!");
 
