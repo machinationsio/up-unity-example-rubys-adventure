@@ -269,7 +269,7 @@ namespace MachinationsUP.Engines.Unity
 
             yield return new WaitUntil(() => _connectionAborted || (_socket.IsConnected && SocketOpenReceived && SocketOpenStartReceived));
 
-            if (_connectionAborted)
+            if (_connectionAborted || (_socket.IsConnected && SocketOpenReceived && SocketOpenStartReceived))
             {
                 Debug.LogError("MGL Connection failure. Game will proceed with default/cached values!");
 
@@ -511,7 +511,9 @@ namespace MachinationsUP.Engines.Unity
         /// </summary>
         /// <param name="elementsFromBackEnd">List of <see cref="JSONObject"/> received from the Socket IO Component.</param>
         /// <param name="updateFromDiagram">TRUE: update existing elements. If FALSE, will throw Exceptions on collisions.</param>
-        private void UpdateWithValuesFromMachinations (List<JSONObject> elementsFromBackEnd, bool updateFromDiagram = false)
+        /// <param name="refreshFromDiagram">TRUE: this is a refresh call. Only new values will be parsed, existing will be skipped.</param>
+        private void UpdateWithValuesFromMachinations (List<JSONObject> elementsFromBackEnd, bool updateFromDiagram = false,
+            bool refreshFromDiagram = false)
         {
             //The response is an Array of key-value pairs PER Machination Diagram ID.
             //Each of these maps to a certain member of _sourceElements.
@@ -534,9 +536,16 @@ namespace MachinationsUP.Engines.Unity
 
                 //Element already exists but not in Update mode?
                 if (_sourceElements[diagramMapping] != null && !updateFromDiagram)
-                    throw new Exception("MGL.UpdateWithValuesFromMachinations: A Source Element already exists for this DiagramMapping: " +
-                                        diagramMapping +
-                                        ". Perhaps you wanted to update it? Then, invoke this function with update: true.");
+                {
+                    //Bark if a refresh wasn't what caused this duplication.
+                    if (!refreshFromDiagram)
+                        throw new Exception(
+                            "MGL.UpdateWithValuesFromMachinations: A Source Element already exists for this DiagramMapping: " +
+                            diagramMapping +
+                            ". Perhaps you wanted to update it? Then, invoke this function with update: true.");
+                    //Go to the next element directly.
+                    return;
+                }
 
                 //This is the important line where the ElementBase is assigned to the Source Elements Dictionary, to be used for
                 //cloning elements in the future.
@@ -641,17 +650,18 @@ namespace MachinationsUP.Engines.Unity
         /// <summary>
         /// Called on Socket Errors.
         /// </summary>
-        private void FailedToConnect ()
+        /// <param name="calledFromThread">TRUE: was called from a Thread, skip loading Cache here.
+        /// The Thread will have to handle that.</param>
+        private void FailedToConnect (bool calledFromThread)
         {
             if (_pendingResponses > 0) _pendingResponses--;
             _connectionAborted = true;
             _socket.autoConnect = false;
 
+            //Loading Cache cannot be done from a thread.
+            if (calledFromThread) return;
             //Cache system active? Load Cache.
             if (!string.IsNullOrEmpty(cacheDirectoryName)) LoadCache();
-            //Running in offline mode now.
-            IsInOfflineMode = true;
-            OnMachinationsUpdate?.Invoke(this, null);
         }
 
         /// <summary>
@@ -703,6 +713,10 @@ namespace MachinationsUP.Engines.Unity
                         _sourceElements[dms] = dm.CachedElementBase;
                 }
             }
+
+            //Running in offline mode now.
+            IsInOfflineMode = true;
+            OnMachinationsUpdate?.Invoke(this, null);
         }
 
         #endregion
@@ -782,7 +796,7 @@ namespace MachinationsUP.Engines.Unity
             SocketOpenReceived = true;
             Debug.Log("[SocketIO] Open received: " + e.name + " " + e.data);
         }
-        
+
         private void OnSocketOpenStart (SocketIOEvent e)
         {
             SocketOpenStartReceived = true;
@@ -839,13 +853,13 @@ namespace MachinationsUP.Engines.Unity
         private void OnAuthDeny (SocketIOEvent e)
         {
             Debug.Log("Game Auth Request Failure: " + e.data);
-            FailedToConnect();
+            FailedToConnect(false);
         }
 
         private void OnSocketError (SocketIOEvent e)
         {
             Debug.Log("[SocketIO] !!!! Error received: " + e.name + " DATA: " + e.data + " ");
-            FailedToConnect();
+            FailedToConnect(true);
         }
 
         private void OnSocketClose (SocketIOEvent e)
@@ -962,7 +976,7 @@ namespace MachinationsUP.Engines.Unity
         /// TRUE when the Socket is open.
         /// </summary>
         static private bool SocketOpenReceived { set; get; }
-        
+
         /// <summary>
         /// TRUE when the Socket is open.
         /// </summary>
