@@ -3,9 +3,9 @@
   <DiagramMappings>
     <MachinationsDiagramMapping>
       <CachedElementBase>
-        <BaseValue>31</BaseValue>
-        <CurrentValue>31</CurrentValue>
-        <MaxValue>50</MaxValue>
+        <BaseValue>12</BaseValue>
+        <CurrentValue>12</CurrentValue>
+        <MaxValue>-1</MaxValue>
         <MinValue>0</MinValue>
       </CachedElementBase>
       <DiagramElementID>19</DiagramElementID>
