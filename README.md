@@ -1,4 +1,4 @@
-# Machinations UP - Unity Example: Ruby's Adventure*
+# Machinations UP - Unity Example: Ruby's Adventure
 
 This repository integrates Machinations UP within Ruby's Adventure, a simple game that is available as a Unity Tutorial.
 
